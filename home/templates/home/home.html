@@ -1,14 +1,20 @@
-<!DOCTYPE html>
+
 <html>
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>MV World</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static "/home/css/materialize.min.css" %}" />
+    <script src="/home/js/materialize.js"></script>
 </head>
 <body>
-    
+    <h1>MV World</h1>
+    <div>
+        <a href="/admin">admin</a>
+{% load static %}
+<img src="{% static "/home/img/d.jpg" %}" alt="My image"/>
+    </div>
 </body>
 </html>

@@ -8,9 +8,16 @@ class Persona(models.Model):
     ('a', 'Active'),
     ('d', 'desactive'),
 )
-    firstname = models.CharField(max_length=length)
-    lastname = models.CharField(max_length=length)
-    birtday = models.DateField() 
+    PAIS_CHOICES = (
+        ('Es','ESPAÑA'),
+        ('Ro','ROMA'),
+        ('USA','ESTADOS UNIDOS'),
+
+    )
+    nombre = models.CharField(max_length=length)
+    apellido = models.CharField(max_length=length)
+    fech_na = models.DateField()
+    direccion = models.TextField(max_length=length)
     email = models.CharField(max_length=length,primary_key = True, unique=True)
     number = models.CharField(max_length=16)
     status = models.CharField(max_length=1, choices=STATUS_CHOICES)
