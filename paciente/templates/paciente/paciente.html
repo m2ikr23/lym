@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Paciente</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static "/home/css/font-awesome.min.css"%}">
+   <link rel="stylesheet" href="{% static "/home/css/bootstrap.min.css" %}">
+   <link rel="stylesheet" href="{% static "/home/css/style.css" %}">
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet' type='text/css'>
+   <link href='http://fonts.googleapis.com/css?family=BenchNine:300,400,700' rel='stylesheet' type='text/css'>
+   <script src="{% static "/home/js/modernizr.js" %}"></script>
+</head>
+<body>
+<div class="container">
+        <div class="btn-group btn-group-justified">
+                <a href="#" class="btn btn-primary">inicio</a>
+                <a href="#" class="btn btn-primary">citas</a>
+                <a href="#" class="btn btn-primary">información</a>
+              </div> 
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4"></div>
+    </div>
+  <div class="row">
+    <div class="col-sm-2">
+        <div class="list-group">
+                <span class="list-group-item"></span>
+                <a href="#" class="list-group-item">
+                    editar Perfil</a>
+                <a href="#" class="list-group-item">Solicitar Cita</a>
+                <a href="#" class="list-group-item">información</a>
+              </div> 
+    </div>
+    <div class="col-sm-3">
+            <h3>Maiker Gutierrez</h3> 
+    </div>
+    <div class="col-sm-6">
+        <img  class="img img-thumbnail img-circle" style="width: 100px" src="{% static "/home/img/member1.jpg" %}" alt="foto de perfil">
+       
+    </div>
+    
+    
+    </div>
+    <div class="row">
+            <div class="col-sm-4"><h2>info1</h2><img src="" alt="imag1"></div>
+            <div class="col-sm-4"><h2>info2</h2><img src="" alt="imagen2"></div>
+            <div class="col-sm-4"><h2>info3</h2><img src="" alt=" imagen3"></div>
+        </div>
+</div>
+</body>
+</html>
