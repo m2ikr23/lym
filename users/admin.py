@@ -1,18 +1,26 @@
 from django.contrib import admin
-
-from .models import Paciente, Cirujano
-
-class PacienteAdmin(admin.ModelAdmin):
-    list_display = ('nombres','apellidos','genero','email','direccion','pais','telefono','status')
+from django.contrib.auth.admin import UserAdmin
+from .models import User
 
 
-class CirujanoAdmin(admin.ModelAdmin):
+class UsersAdmin(UserAdmin):
+
+    fieldsets = (
+        ('User',{'fields': ('email','password')}),
+        ('Info Personal', {'fields':('first_name','last_name',
+                                        'address','phone','avatar')})
+    )
+
+    add_fieldsets = (
+        ('User',{'fields': ('email','password')}),
+        ('Info Personal', {'fields':('first_name','last_name',
+                                        'address','phone','avatar')})
+    )
     
-    list_display = ('nombres','apellidos','genero','email','status','especialidad')
+    list_display=['first_name','email']
+    ordering = ['email']
 
-
-admin.site.register(Paciente,PacienteAdmin)
-admin.site.register(Cirujano, CirujanoAdmin)
+admin.site.register(User,UsersAdmin)
 
 
 

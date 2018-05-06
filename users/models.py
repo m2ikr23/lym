@@ -1,53 +1,45 @@
 from django.db import models
-# Create your models here.
+from django.contrib.auth.models import AbstractBaseUser,BaseUserManager,PermissionsMixin
 
-class Persona(models.Model):
+class UserManager(BaseUserManager):
 
-    STATUS_CHOICES = (
-    ('A', 'Activo'),
-    ('I', 'Inactivo'),
-)
+    def _create_user(self,email,password,is_staff,is_superuser,**extra_fields):
+
+        if not email:
+            return ValueError('El email es obligatorio')
+        email = self.normalize_email(email)
+        user = self.model(email=email, is_active=True, is_staff=is_staff,is_superuser=is_superuser,**extra_fields)
+
+        user.set_password(password)
+        user.save(using = self.db)
+        return user
+
+
+    def create_user(self,email,password=None,**extra_fields):
+        return  self._create_user(email,password,False,False,**extra_fields)
    
-    GENERO_CHOICES = (
-    ('F', 'Femenino'),
-    ('M', 'Masculino'),
-)
-   
-    nombres = models.CharField(max_length=100)
-    apellidos = models.CharField(max_length=100)
-    genero = models.CharField(max_length=1, choices= GENERO_CHOICES)
-    fech_na = models.DateField()
-    direccion = models.CharField(max_length=150)
-    email = models.CharField(max_length=100,primary_key = True, unique=True)
-    telefono = models.CharField(max_length=16)
-    status = models.CharField(max_length=1, choices=STATUS_CHOICES)
-
-    class Meta:
-        abstract = True
+    def create_superuser(self,email,password,**extra_fields):
+        return self._create_user(email,password,True,True,**extra_fields)
 
 
-class Paciente(Persona):
-    PAIS_CHOICES = (
-        ('ES','ESPAÑA'),
-        ('RO','ROMA'),
-        ('USA','ESTADOS UNIDOS'),
+class User (AbstractBaseUser,PermissionsMixin):
 
-    )
+    email = models.CharField(max_length=50, unique=True)
+    first_name=models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    phone = models.CharField(max_length=16)
+    address = models.CharField(max_length=100, default="mi direccion")
+    birthdate = models.DateField(auto_now=True)
+    avatar = models.URLField()
 
-    pais = models.CharField(max_length=4, choices=PAIS_CHOICES )
+    objects = UserManager()
 
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
 
-    def __str__(self):
-        return self.pais
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
 
-class Cirujano(Persona):
-    ESP_CHOICES = (
-        ('ES','ESPAÑA'),
-        ('RO','ROMA'),
-        ('USA','ESTADOS UNIDOS'),
+    def get_short_name(self):
+        return self.first_name
 
-    )
-    especialidad = models.TextField(max_length=100)
-
-    def __str__(self):
-        return self.especialidad
