@@ -8,15 +8,15 @@
     <meta name="author" content="">
     <title>MV WORLD</title>
     {% load static %}
- 	<link rel="stylesheet" href="{% static "/home/css/font-awesome.min.css"%}">
-	<link rel="stylesheet" href="{% static "/home/css/bootstrap.min.css" %}">
-	<link rel="stylesheet" href="{% static "/home/css/style.css" %}">
+ 	<link rel="stylesheet" href="{% static "users/home/css/font-awesome.min.css"%}">
+	<link rel="stylesheet" href="{% static "users/home/css/bootstrap.min.css" %}">
+	<link rel="stylesheet" href="{% static "users/home/css/style.css" %}">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=BenchNine:300,400,700' rel='stylesheet' type='text/css'>
-	<script src="{% static "/home/js/modernizr.js" %}"></script>
-	<link rel="shartcut icon" type="image/x-icon" href="{% static "/home/img/favicon1.jpg" %}">
+	<script src="{% static "users/home/js/modernizr.js" %}"></script>
+	<link rel="shartcut icon" type="image/x-icon" href="{% static "users/home/img/favicon1.jpg" %}">
 	<!--[if lt IE 9]>
-      <script src="{% static "/home/js/html5shiv.js" %}></script>
+      <script src="{% static "users/home/js/html5shiv.js" %}></script>
       <script src="js/respond.min.js"></script>
     <![endif]-->
 
@@ -31,7 +31,7 @@
 			<div class="row">
 				<div class="col-xs-3 header-logo">
 					<br>
-					<a href="index.html"><img src="{% static "/home/img/logo.png" %}" alt="" class="img-responsive logo"></a>
+					<a href="index.html"><img src="{% static "users/home/img/logo.png" %}" alt="" class="img-responsive logo"></a>
 				</div>
 
 
@@ -53,13 +53,13 @@
 					    <div class="collapse navbar-collapse">
 					      
 					      <ul class="nav navbar-nav navbar-right">
-					      	<li class="active"><a href="{% url 'home' %}"><i class="fa fa-lg fa-home"></i></a></li>
+					      	<li class="active"><a href="{% url 'users:home' %}"><i class="fa fa-lg fa-home"></i></a></li>
 					        <li><a class="menu" href="#nosotros">Nosotros</a></li>
 					        <li><a class="menu" href="#servicios">Servicios</a></li>
 					        <li><a class="menu" href="#medicos">Medicos</a></li>
 					        <li><a class="menu" href="#contact">Contáctenos</a></li>
-					        <li><a href=" {% url 'paciente' %} " data-toggle="modal">Acceso</a></li>
-					        <li><a href="{% url 'registro' %}" data-toggle="modal">Registrarse</a></li>
+					        <li><a href=" {% url 'users:login' %} " data-toggle="modal">Acceso</a></li>
+					        <li><a href="#" data-toggle="modal">Registrarse</a></li>
 
 
 					      </ul>
@@ -81,7 +81,7 @@
 			        <!-- Wrapper for slides -->
 			        <div class="carousel-inner" role="listbox">
 			            <div class="item active">
-			            	<img src="{% static "/home/img/slide-one.jpg" %}" alt="">
+			            	<img src="{% static "users/home/img/slide-one.jpg" %}" alt="">
 			                <div class="carousel-caption">
 		               			<h1>MV WORLD</h1>
 		               			<p>servicio de alta calidad</p>
@@ -89,7 +89,7 @@
 			                </div>
 			            </div>
 			            <div class="item">
-			            	<img src="{% static "/home/img/slide-two.jpg" %}" alt="">
+			            	<img src="{% static "users/home/img/slide-two.jpg" %}" alt="">
 			                <div class="carousel-caption">
 		               			<h1>MV WORLD</h1>
 		               			<p>servicio de alta calidad</p>
@@ -97,7 +97,7 @@
 			                </div>
 			            </div>
 			            <div class="item">
-			            	<img src="{% static "/home/img/slide-three.jpg" %}" alt="">
+			            	<img src="{% static "users/home/img/slide-three.jpg" %}" alt="">
 			                <div class="carousel-caption">
 		               			<h1>MV WORLD</h1>
 		               			<p>servicio de alta calidad</p>
@@ -105,7 +105,7 @@
 			                </div>
 			            </div>
 			            <div class="item">
-			            	<img src="{% static "/home/img/slide-four.jpg" %}" alt="">
+			            	<img src="{% static "users/home/img/slide-four.jpg" %}" alt="">
 			                <div class="carousel-caption">
 		               			<h1>MV WORLD</h1>
 		               			<p>servicio de alta calidad</p>
@@ -137,7 +137,7 @@
 				<div class="col-md-4 col-sm-6">
 					<div class="single-about-detail clearfix">
 						<div class="about-img">
-							<img class="img-responsive" src="{% static "/home/img/item1.jpg" %}" alt="">
+							<img class="img-responsive" src="{% static "users/home/img/item1.jpg" %}" alt="">
 						</div>
 						<div class="about-details">
 							<div class="pentagon-text">
@@ -151,7 +151,7 @@
 				<div class="col-md-4 col-sm-6">
 					<div class="single-about-detail">
 						<div class="about-img">
-							<img class="img-responsive" src="{% static "/home/img/item2.jpg" %}" alt="">
+							<img class="img-responsive" src="{% static "users/home/img/item2.jpg" %}" alt="">
 						</div>
 						<div class="about-details">
 							<div class="pentagon-text">
@@ -165,7 +165,7 @@
 				<div class="col-md-4 col-sm-6">
 					<div class="single-about-detail">
 						<div class="about-img">
-							<img class="img-responsive" src="{% static "/home/img/item3.jpg" %}" alt="">
+							<img class="img-responsive" src="{% static "users/home/img/item3.jpg" %}" alt="">
 						</div>
 						<div class="about-details">
 							<div class="pentagon-text">
@@ -191,7 +191,7 @@
 					<div class="single-service">
 						<div class="single-service-img">
 							<div class="service-img">
-								<img class="heart img-responsive" src="{% static "/home/img/service1.png" %}" alt="">
+								<img class="heart img-responsive" src="{% static "users/home/img/service1.png" %}" alt="">
 							</div>
 						</div>
 						<h3>Problema cardíaco</h3>
@@ -201,7 +201,7 @@
 					<div class="single-service">
 						<div class="single-service-img">
 							<div class="service-img">
-								<img class="brain img-responsive" src="{% static "/home/img/service2.png" %}" alt="">
+								<img class="brain img-responsive" src="{% static "users/home/img/service2.png" %}" alt="">
 							</div>
 						</div>
 						<h3>Problema cerebral</h3>
@@ -211,7 +211,7 @@
 					<div class="single-service">
 						<div class="single-service-img">
 							<div class="service-img">
-								<img class="knee img-responsive" src="{% static "/home/img/service3.png" %}" alt="">
+								<img class="knee img-responsive" src="{% static "users/home/img/service3.png" %}" alt="">
 							</div>
 						</div>
 						<h3>Problema de rodilla</h3>
@@ -221,7 +221,7 @@
 					<div class="single-service">
 						<div class="single-service-img">
 							<div class="service-img">
-								<img class="bone img-responsive" src="{% static "/home/img/service4.png" %}" alt="">
+								<img class="bone img-responsive" src="{% static "users/home/img/service4.png" %}" alt="">
 							</div>
 						</div>
 						<h3>Problema de los huesos humanos</h3>
@@ -244,7 +244,7 @@
 
 				<div class="col-md-2 single-member col-sm-4">
 					<div class="person">
-						<img class="img-responsive" src="{% static "/home/img/member1.jpg" %}" alt="member-1">
+						<img class="img-responsive" src="{% static "users/home/img/member1.jpg" %}" alt="member-1">
 					</div>
 					<div class="person-detail">
 						<div class="arrow-bottom"></div>
@@ -260,13 +260,13 @@
 						<p>Esto puede incluir información sobre su audición, vista y crecimiento.</p>
 					</div>
 					<div class="person">
-						<img class="img-responsive" src="{% static "/home/img/member2.jpg" %}" alt="member-2">
+						<img class="img-responsive" src="{% static "users/home/img/member2.jpg" %}" alt="member-2">
 					</div>
 				</div>
 
 				<div class="col-md-2 single-member col-sm-4">
 					<div class="person">
-						<img class="img-responsive" src="{% static "/home/img/member3.jpg" %}" alt="member-3">
+						<img class="img-responsive" src="{% static "users/home/img/member3.jpg" %}" alt="member-3">
 					</div>
 					<div class="person-detail">
 						<div class="arrow-bottom"></div>
@@ -282,13 +282,13 @@
 						<p>Esto puede incluir información sobre su audición, vista y crecimiento.</p>
 					</div>
 					<div class="person">
-						<img class="img-responsive" src="{% static "/home/img/member4.jpg" %}" alt="member-4">
+						<img class="img-responsive" src="{% static "users/home/img/member4.jpg" %}" alt="member-4">
 					</div>
 				</div>
 
 				<div class="col-md-2 single-member col-sm-4">
 					<div class="person">
-						<img class="img-responsive" src="{% static "/home/img/member5.jpg" %}" alt="member-5">
+						<img class="img-responsive" src="{% static "users/home/img/member5.jpg" %}" alt="member-5">
 					</div>
 					<div class="person-detail">
 						<div class="arrow-bottom"></div>
@@ -304,7 +304,7 @@
 						<p>Esto puede incluir información sobre su audición, vista y crecimiento.</p>
 					</div>
 					<div class="person">
-						<img class="img-responsive" src="{% static "/home/img/member6.jpg" %}" alt="member-5">
+						<img class="img-responsive" src="{% static "users/home/img/member6.jpg" %}" alt="member-5">
 					</div>
 				</div>
 			</div>
@@ -364,11 +364,11 @@
 
 	<!-- script tags
 	============================================================= -->
-	<script src="{% static "/home/js/jquery-2.1.1.js" %}"></script>
+	<script src="{% static "users/home/js/jquery-2.1.1.js" %}"></script>
 	<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
-	<script src="{% static "/home/js/gmaps.js" %}"></script>
-	<script src="{% static "/home/js/smoothscroll.js" %}" ></script>
-	<script src="{% static "/home/js/bootstrap.min.js" %}"></script>
-	<script src="{% static "/home/js/custom.js" %}"></script>
+	<script src="{% static "users/home/js/gmaps.js" %}"></script>
+	<script src="{% static "users/home/js/smoothscroll.js" %}" ></script>
+	<script src="{% static "users/home/js/bootstrap.min.js" %}"></script>
+	<script src="{% static "users/home/js/custom.js" %}"></script>
 </body>
 </html>

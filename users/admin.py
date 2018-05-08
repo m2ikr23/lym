@@ -17,7 +17,7 @@ class UsersAdmin(UserAdmin):
                                         'address','phone','avatar')})
     )
     
-    list_display=['first_name','email']
+    list_display=['id','first_name','email']
     ordering = ['email']
 
 admin.site.register(User,UsersAdmin)

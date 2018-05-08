@@ -25,12 +25,15 @@ class UserManager(BaseUserManager):
 class User (AbstractBaseUser,PermissionsMixin):
 
     email = models.CharField(max_length=50, unique=True)
-    first_name=models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    phone = models.CharField(max_length=16)
-    address = models.CharField(max_length=100, default="mi direccion")
-    birthdate = models.DateField(auto_now=True)
-    avatar = models.URLField()
+    first_name=models.CharField(max_length=100,verbose_name='nombre')
+    dni = models.CharField(max_length=16)
+    last_name = models.CharField(max_length=100,verbose_name='apellido')
+    phone = models.CharField(max_length=16,verbose_name='telefono')
+    address = models.CharField(max_length=100, default=" ",verbose_name='direccion')
+    birthdate = models.DateField(auto_now=False,verbose_name='fecha de naciemiento')
+    avatar = models.ImageField(upload_to='users/static/users/imgs')
+    is_pacient = models.BooleanField(default=False)
+    is_medical = models.BooleanField(default=False)
 
     objects = UserManager()
 
@@ -43,3 +46,5 @@ class User (AbstractBaseUser,PermissionsMixin):
     def get_short_name(self):
         return self.first_name
 
+    def __str__(self):
+        return self.first_name
