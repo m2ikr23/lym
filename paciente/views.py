@@ -1,23 +1,32 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.views import View
+from django.urls import reverse_lazy 
+from django.views.generic import View, DetailView
+from django.views.generic.edit import CreateView,UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth import authenticate,login,logout 
+from django.contrib.auth.decorators import login_required
 
-from .forms import RegistroForm
-
+from .forms import CreateForm
+from .forms import SolicitarCitaForm
+from .models import Paciente
 # Create your views here.
 
-class PacienteView(View):
-    form_paciente = RegistroForm
-    template_name = 'paciente/registroPaciente.html'
-    initial = {'key':'value'}
-    def get(self,request,*args,**kwargs):
-        form=self.form_paciente(initial = self.initial)
-        return render(request,self.template_name,{'form':form})
 
-    def post(self,request,*args,**kwargs):
-        form = self.form_paciente(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/success/')
+class CrearView(CreateView):
+    success_url = reverse_lazy('users:login')
+    template_name = 'paciente/registro_paciente.html'
+    model = Paciente
+    form_class = CreateForm
 
-        return render(request,self.template_name,{'form':form})
+    def form_valid(self,form):
+        self.object = form.save(commit=False)
+        self.object.set_password(self.object.password)
+        self.object.is_pacient = True
+        self.object.save()
+        return HttpResponseRedirect(self.get_success_url())
+
+def solicitarCitaView(request):
+    form = SolicitarCitaForm
+    return render(request,'paciente/solicitar_cita.html',{'form':form})

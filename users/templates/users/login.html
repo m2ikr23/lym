@@ -1,10 +1,20 @@
-<h1 class="title">Login</h1>
+{% extends "admin/formularios.html" %}
+{% block titulo %}
+Inicio de sesion
+{% endblock %}
+
+{% block content %}
 {% if message %}
-<p class="message"> {{message}} </p>
+<blockquote class="red-text text-darken-3"> {{message}} </blockquote>
 {% endif %}
-<form action="" method="post">
+
+<form class="col s8" action="" method="post">
   
     {%csrf_token%}
     {{ form.as_p }}
-    <button type="submit">Iniciar Sesión</button>
+    <button class="btn btn-sm" type="submit">Iniciar Sesión</button>
 </form>
+ 
+
+
+{% endblock %}

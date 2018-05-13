@@ -1,0 +1,32 @@
+{% extends "admin/formularios.html" %}
+{% block titulo %}
+Registro de paciente
+{% endblock %}
+{% block content %}
+<form class="col s8" action="" method="post">
+    {% csrf_token %}
+    {% for field in form %}
+
+    <div class="row">
+      <div class="input-field col s12">
+        {% if field.errors %}
+           {{field.errors}}
+        {% endif %}
+       
+        {{field}}
+        
+        
+      <label class="active " for="{{ field.name }}">{{ field.label }}</label>
+      </div>
+    </div>
+
+    {% endfor %}
+    <div class="form-item   left-align col s8">
+      <button class = "btn btn-large blue ">Guardar</a>
+</div>
+<div class="form-item left-align col s3">
+      <a class = "btn btn-large red right-align" href="{% url 'users:home' %}" type="submit">Cancelar</a>
+  </div>
+</form>
+
+{% endblock %}

@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser,BaseUserManager,PermissionsMixin
-
+from uuid import uuid4
+from datetime import date
+import os
 class UserManager(BaseUserManager):
 
     def _create_user(self,email,password,is_staff,is_superuser,**extra_fields):
@@ -23,6 +25,11 @@ class UserManager(BaseUserManager):
 
 
 class User (AbstractBaseUser,PermissionsMixin):
+    
+    GENERO_CHOICES = (
+        ('M','Masculino'),
+        ('F','Femenino'),
+    )
 
     email = models.CharField(max_length=50, unique=True)
     first_name=models.CharField(max_length=100,verbose_name='nombre')
@@ -30,8 +37,8 @@ class User (AbstractBaseUser,PermissionsMixin):
     last_name = models.CharField(max_length=100,verbose_name='apellido')
     phone = models.CharField(max_length=16,verbose_name='telefono')
     address = models.CharField(max_length=100, default=" ",verbose_name='direccion')
-    birthdate = models.DateField(auto_now=False,verbose_name='fecha de naciemiento')
-    avatar = models.ImageField(upload_to='users/static/users/imgs')
+    birthdate = models.DateField(default= date.today,verbose_name='fecha de nacimiento' )
+    avatar = models.ImageField(upload_to = 'pic_folder/', default = 'pic_folder/None/user.png')
     is_pacient = models.BooleanField(default=False)
     is_medical = models.BooleanField(default=False)
 
@@ -44,7 +51,8 @@ class User (AbstractBaseUser,PermissionsMixin):
     REQUIRED_FIELDS = []
 
     def get_short_name(self):
-        return self.first_name
+        return self.first_name + " " + self.last_name
 
+  
     def __str__(self):
         return self.first_name

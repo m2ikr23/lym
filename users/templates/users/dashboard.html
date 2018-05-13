@@ -1,2 +1,109 @@
-<h1>Bienvenido</h1>
-<a href=" {% url 'users:logout' %} ">logout</a>
+{% extends "admin/template_users.html" %}
+
+{% block card%}
+<div class="card">
+        <div class="card-image">
+          
+          <img class="circle responsive-img" src= '{{MEDIA_URL}}{{user.avatar}}' >
+          <h6 class="center-align">{{user.get_short_name}}</h6>
+          <a class="btn-floating halfway-fab waves-effect waves-light btn-small"><i class="material-icons">add</i></a>
+        </div>
+        <div class="card-content">
+                <div class="collection ">
+                        {% if user.is_staff %}
+                        <a href=" {% url 'users:update' %} " class="collection-item center-align">Actualizar datos</a>
+                        <a href=" {% url 'users:create' %}" class="collection-item center-align">Crear administrador</a>
+                        <a href="#!" class="collection-item center-align">especialidades</a>
+                        <a href="#!" class="collection-item center-align">paquetes</a>
+                        {% endif %}  
+
+                        {% if user.is_medical %}
+                        <a href=" {% url 'users:update' %} " class="collection-item center-align">Actualizar datos</a>
+                        <a href=" # " class="collection-item center-align">Registrar historia </a>
+                        <a href=" #" class="collection-item center-align">consultar historia </a>
+                        <a href=" # " class="collection-item center-align">Planificar Cirugias  </a>
+                        <a href=" # " class="collection-item center-align">Consultar planificacion </a>
+                        {% endif %}  
+
+                        {% if user.is_pacient %}
+                        <a href=" {% url 'users:update' %} " class="collection-item center-align">Actualizar datos</a>
+                        <a href="#!" class="collection-item center-align">Consultar cita </a>
+                        <a href="#!" class="collection-item center-align">Solicitar paquetes </a>
+                        {% endif %}  
+                    </div>
+                            
+        </div>
+      </div>
+    {% endblock %}
+
+    {% block centro %}
+    <section>
+            <ul id="info" class="collection">
+             <li class="collection-item">Dirección: {{user.address}} </li>
+             <li class="collection-item">Teléfono: {{user.phone}} </li>
+             <li class="collection-item">Fecha de nacimiento: {{user.birthdate}} </li>
+            </ul>
+         
+                  </section>
+                    <!-- /widget -->
+                   {% if user.is_medical %} 
+                   <section>
+                 
+                    <div class="widget widget-nopad">
+                        <div class="widget-header">
+                            <i class="icon-list-alt"></i>
+                            <h3 style="display: inline"> Agenda </h3>
+                        </div>
+                        <!-- /widget-header -->
+                        <div class="widget-content">
+                            <div id='calendar'>
+                            </div>
+                        </div>
+                        <!-- /widget-content -->
+                    </div>
+                    
+                      </section>
+                      {% endif %}
+        <section>
+                {% if user.is_staff %}
+                    <div class="widget">
+                        <div class="widget-header">
+                            <i class="icon-signal"></i>
+                            <h3 style="display: inline">Estadistica del sitio </h3>
+                        </div>
+                        <!-- /widget-header -->
+                        <div class="widget-content">
+                            <canvas id="area-chart" class="chart-holder" height="250" width="538"> </canvas>
+                            <!-- /area-chart -->
+                        </div>
+                        <!-- /widget-content -->
+                    </div>
+                    <div class="widget">
+                            <div class="widget-header">
+                                <i class="icon-signal"></i>
+                                <h3 style="display: inline">Estadistica del Pacientes </h3>
+                            </div>
+                            <!-- /widget-header -->
+                            <div class="widget-content">
+                                <canvas id="area-chart" class="chart-holder" height="250" width="538"> </canvas>
+                                <!-- /area-chart -->
+                            </div>
+                            <!-- /widget-content -->
+                        </div>
+                        <div class="widget">
+                                <div class="widget-header">
+                                    <i class="icon-signal"></i>
+                                    <h3 style="display: inline">Estadistica del Cirugias </h3>
+                                </div>
+                                <!-- /widget-header -->
+                                <div class="widget-content">
+                                    <canvas id="area-chart" class="chart-holder" height="250" width="538"> </canvas>
+                                    <!-- /area-chart -->
+                                </div>
+                                <!-- /widget-content -->
+                            </div>
+                    {% endif %}
+                  </section>
+    {% endblock %}
+
+    

@@ -1,7 +1,24 @@
-<h1>crear admin</h1>
+{% extends "admin/formularios.html" %}
+{% block titulo %}
+Crear Administrador
+{% endblock %}
 
-<form action="" method="post">
+
+{% block content %}
+{% if message %}
+<blockquote class="red-text text-darken-3"> {{message}} </blockquote>
+{% endif %}
+
+<form class="form col s9 " action="" method="post">
     {% csrf_token %}
-    {{ formC.as_p }}
-    <button type="submit">Guardar</button>
+    {{ form.as_p }}
+    <div class="form-item left-align col s8">
+        <button class = "btn btn-large blue left-align" type="submit">Guardar</button>
+    </div>
+    <div class="form-item  right-align col s3">
+          <button class = "btn btn-large red " href="{% url 'users:home' %}">Cancelar</a>
+    </div>
+  
 </form>
+
+{% endblock %}

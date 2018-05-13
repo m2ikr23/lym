@@ -1,0 +1,41 @@
+select {
+    display: none !important;
+}
+
+ul.errorlist {
+    color: red;
+}
+#dropdown1 {
+    color: aliceblue;
+    background-color: #574141bb;
+    margin: 50px;
+  }
+
+  #dropdown1 a {
+    color: aliceblue;
+  }
+
+  .card .card-content {
+    padding: 0px;
+
+}
+
+.btn-floating.halfway-fab {
+    position: absolute;
+    top: 20px;
+    right: 5px;
+    bottom: -20px;
+    background-color:rgba(14, 8, 8, 0.623);
+}
+
+
+.widget-header [class^="icon-"], .widget-header [class*=" icon-"] {
+	
+	display: inline;
+
+}
+.widget-header h3 {
+   
+    display: inline;
+    
+}
