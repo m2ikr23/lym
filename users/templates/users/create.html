@@ -9,7 +9,7 @@ Crear Administrador
 <blockquote class="red-text text-darken-3"> {{message}} </blockquote>
 {% endif %}
 
-<form class="form col s9 " action="" method="post">
+<form action="" method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <div class="form-item left-align col s8">

@@ -2,11 +2,14 @@
 <head>
 <meta charset="utf-8">
 <title>MV World</title>
+{% load admin_static %}
 {% load static %}
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="{% static "users/admin/css/formulario.css"  %} " rel="stylesheet">
 <link href="{% static "users/admin/css/materialize.min.css"  %} " rel="stylesheet">
+
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link href="{% static "users/admin/css/font-awesome.css"  %} "  rel="stylesheet">
+
 </head>
 <body>
 
@@ -14,9 +17,7 @@
                     <div class="nav-wrapper blue">
                                
                         <a href="{% url 'users:home' %}" class="brand-logo">MV World</a>
-                          <span class="left-align" style=" margin-left: 150px;"><a>{% block titulo %}{% endblock %} </a></span>
-                                 
-                                <ul class="right hide-on-med-and-down">
+                            <ul class="right hide-on-med-and-down">
                                   <li><a href="#"></a></li>
                                   <li><a href="#"></a></li>
                                   <li><a href="#"></a></li>
@@ -27,25 +28,34 @@
                               </div>
                             </nav>
 <div class="row">
-    <div class="col s3">
+    <div class="col s2">
 
     </div>
     <div class="col s8">
-            <div class="row"><div class="col s6"></div></div>
-            <div class="row"><div class="col s6"></div></div>
-            <div class="row"><div class="col s6"></div></div>
-    <div class="card" >
+        
+    <div class="content" >
+        <div class="header"> <h3>{% block titulo %}{% endblock %}</h3></div>
     {% block content %}
     {% endblock %} 
      
     </div>
     </div>
-<div class="col s3">
+<div class="col s2">
 
     </div>
 </div>
-<script src="{% static "users/admin/js/jquery-1.7.2.min.js"  %}"></script> 
+<script src="{% static "users/admin/js/jquery-1.7.2.min.js"  %}"></script>
+<script type="text/javascript" >
+
+    $(document).ready(function(){
+        var hoy = new Date();
+        var dd = hoy.getDate();
+        $('.datepicker').datepicker({'yearRange':100, 'maxDate': hoy,'format':'yyyy-mm-dd'});
+        });
+       
+</script>
 <script src="{% static "users/admin/js/materialize.js" %}"></script>
 <script src="{% static "users/admin/js/base.js" %}"></script> 
+
 </body>
 </html>

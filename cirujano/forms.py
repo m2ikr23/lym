@@ -19,3 +19,7 @@ class CreateForm(forms.ModelForm):
         if value_pass2 != value_pass:
             raise forms.ValidationError('Las password no es igual, vuelva a escribir la password') 
         value_pass
+
+    def __init__(self, *args, **kwargs):
+        super(CreateForm, self).__init__(*args, **kwargs)
+        self.fields['birthdate'].widget.attrs.update( {'id':'fecha_selec', 'class':'datepicker' } )
