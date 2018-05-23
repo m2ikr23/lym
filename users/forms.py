@@ -1,5 +1,5 @@
 from django import forms
-from .models import User
+from .models import User,Country
 class LoginForm(forms.Form):
 
     email = forms.EmailField( widget = forms.EmailInput)
@@ -16,9 +16,10 @@ class CreateForm(forms.ModelForm):
                                          widget=forms.PasswordInput(),
                                                 label="Password ( denuevo )")
     birthdate = forms.CharField(widget=forms.DateInput,label='Cumpleaños')
+    prefix = forms.CharField(max_length=5, empty_value= '58') 
     class Meta:
         model = User
-        fields = ['first_name','last_name','dni','sex','birthdate','address',
+        fields = ['first_name','last_name','dni','address','prefix','phone','sex','birthdate',
                     'email','password']
 
 
@@ -37,7 +38,7 @@ class CreateForm(forms.ModelForm):
             raise forms.ValidationError('Las password no es igual, vuelva a escribir la password') 
         value_pass
     
-    
+
     def __init__(self, *args, **kwargs):
         super(CreateForm, self).__init__(*args, **kwargs)
         self.fields['birthdate'].widget.attrs.update( {'id':'fecha_selec',

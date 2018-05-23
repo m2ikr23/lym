@@ -22,13 +22,19 @@
 body{
     font-family: Roboto1;
 }
- .content {
-    
+
+.content {
+
     margin-top: 10%;
-    padding: 5% 20% 10%;
-    border-style: ridge;
-    box-shadow: 11px 4px 20px 0px black;
+    padding: 5% 10% 10%;
 }
+
+.row.form-input {
+    width: 40%;
+    margin: 2% 5% 0% 5%;
+    float: left;
+}
+
 
 .img-content {
     padding: 0% 30% 10%;

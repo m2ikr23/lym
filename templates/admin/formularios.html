@@ -7,16 +7,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link href="{% static "users/admin/css/formulario.css"  %} " rel="stylesheet">
 <link href="{% static "users/admin/css/materialize.min.css"  %} " rel="stylesheet">
-
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+<link href="{% static "users/admin/font/iconfont/material-icons.css"  %} " rel="stylesheet">
 </head>
 <body>
 
     <nav>
                     <div class="nav-wrapper blue">
                                
-                        <a href="{% url 'users:home' %}" class="brand-logo">MV World</a>
+                        <a href="{% url 'users:home' %}" class="brand-logo"> <i class="material-icons">format_list_bulleted</i> MV World</a>
                             <ul class="right hide-on-med-and-down">
                                   <li><a href="#"></a></li>
                                   <li><a href="#"></a></li>
@@ -33,7 +31,7 @@
     </div>
     <div class="col s8">
         
-    <div class="content" >
+    <div class=" content z-depth-4" >
         <div class="header"> <h3>{% block titulo %}{% endblock %}</h3></div>
     {% block content %}
     {% endblock %} 

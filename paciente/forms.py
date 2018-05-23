@@ -5,13 +5,13 @@ from .models import Paciente
 
 class CreateForm(Create):
 
+   
     class Meta:
         model = Paciente
-        fields = ['first_name','last_name','dni','sex','birthdate','address','pais','codigo_Postal',
+        fields = ['first_name','last_name','dni','pais','codigo_Postal','address','phone','sex','birthdate',
                     'email','repeat_email','password','repeat_password']
 
-   
-   
+
 
 class SolicitarCitaForm(forms.Form):
 

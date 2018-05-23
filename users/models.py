@@ -38,7 +38,7 @@ class User (AbstractBaseUser,PermissionsMixin):
     sex = models.CharField(max_length=2, choices = GENERO_CHOICES,verbose_name='sexo')
     phone = models.CharField(max_length=16,verbose_name='telefono')
     address = models.CharField(max_length=100,verbose_name='dirección')
-    birthdate = models.DateField(blank = True,verbose_name='cumpleaños' )
+    birthdate = models.DateField(default= date.today,verbose_name='cumpleaños' )
     avatar = models.ImageField(upload_to = 'pic_folder/', default = 'pic_folder/None/user.png')
     is_pacient = models.BooleanField(default=False)
     is_medical = models.BooleanField(default=False)
@@ -57,3 +57,13 @@ class User (AbstractBaseUser,PermissionsMixin):
   
     def __str__(self):
         return self.first_name
+
+
+
+class Country(models.Model):
+    
+    country = models.CharField(max_length=30)
+    country_fix = models.PositiveIntegerField(unique = True, primary_key=True )
+
+    def __str__(self):
+        return self.country

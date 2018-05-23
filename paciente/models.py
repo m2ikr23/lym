@@ -1,16 +1,11 @@
 from django.db import models
-from users.models import User
+from users.models import User,Country
 # Create your models here.
 
 class Paciente(User):
 
-    PAIS_CHOICES=(
-        ('ES','Espana'),
-        ('EC','Ecuador'),
-        ('USA','Estados Unidos'),        
-    )
     codigo_Postal = models.CharField(max_length=16)
-    pais = models.CharField(max_length=30,choices=PAIS_CHOICES)
+    pais = models.ForeignKey(Country, on_delete=models.CASCADE)
     
     def setIs_Pacient(self):
         self.is_pacient = True

@@ -11,6 +11,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import CreateForm
 from .forms import SolicitarCitaForm
 from .models import Paciente
+from users.models import Country
 # Create your views here.
 
 
