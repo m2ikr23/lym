@@ -33,12 +33,16 @@
         
     <div class=" content z-depth-4" >
         <div class="header"> <h3>{% block titulo %}{% endblock %}</h3></div>
-    {% block content %}
+          
+    {% block content %}<div class="img-content">
+  <img class="img-user" src=" {% static "users\admin\img\user_giKLtxw.png " %} " alt="Registro">
+    </div>
+  
     {% endblock %} 
      
     </div>
     </div>
-<div class="col s2">
+    <div class="col s2">
 
     </div>
 </div>
@@ -50,10 +54,29 @@
         var dd = hoy.getDate();
         $('.datepicker').datepicker({'yearRange':100, 'maxDate': hoy,'format':'yyyy-mm-dd'});
         });
+
+        $(document).ready(function(){
+        var hoy = new Date();
+        var dd = hoy.getDate();
+        var min = 
+        $('.datepicker1').datepicker({'yearRange':100, 'minDate': min,'format':'yyyy-mm-dd'});
+        });
        
+    $(document).ready(function(){
+    $('select').formSelect();
+    $('#select_pais').on('change', Ver);
+      function Ver(){
+        var values = $('option:selected').val()
+        console.log(values);
+        $('#prefix').val(values)
+      }
+ 
+  });  
 </script>
 <script src="{% static "users/admin/js/materialize.js" %}"></script>
 <script src="{% static "users/admin/js/base.js" %}"></script> 
-
+{% block scripts %}
+  
+{% endblock scripts %}
 </body>
 </html>

@@ -1,6 +1,15 @@
 select {
     display: none !important;
 }
+.card-user.col.s3 {
+    background-color: black;
+    min-height: 800px;
+}
+
+div#tabla-ciru {
+    max-height: 500px;
+    overflow: auto;
+}
 
 ul.errorlist {
     color: red;
@@ -38,4 +47,34 @@ ul.errorlist {
    
     display: inline;
     
+}
+
+.card {
+    background-color: #1f1f1ffa;
+}
+
+.card-image {
+    color: white;
+    background-color: #000000e0;
+    background-image: url(../../home/img/Lighthouse.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.card .card-image img {
+    border-radius: 70px 70px;
+    max-width: 150px;
+    max-height: 150px;
+}
+
+.collection{
+
+    border: none
+}
+
+a.collection-item.center-align {
+    background-color: transparent;
+    color: white;
+
+    border: none
 }

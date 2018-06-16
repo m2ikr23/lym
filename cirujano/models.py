@@ -1,10 +1,8 @@
 from django.db import models
 from users.models import User
- 
+from clinica.models import Quirofano
 from paciente.models import Paciente
-# Create your models here.
-
-
+from datetime import date
 
 class Especialidad(models.Model):
     
@@ -16,18 +14,17 @@ class Especialidad(models.Model):
 
 class Cirujano(User):
 
-    especialidad = models.ManyToManyField(Especialidad,through='Cirujano_Especialidad')
+    especialidad = models.ManyToManyField(Especialidad)
     def setIs_Medical(self):
         self.is_medical = True
 
     def __str__(self):
-        return self.first_name
+        if self.sex=='F':
+            return '%s %s %s' %('Dra. ' , self.first_name, self.last_name)
+        else:
+            return '%s %s %s' %('Dra. ' , self.first_name, self.last_name)
  
 
-class Cirujano_Especialidad(models.Model):
-
-    cirujano = models.ForeignKey(Cirujano,on_delete=models.CASCADE)
-    especialidad = models.ForeignKey(Especialidad,on_delete=models.CASCADE)
 
 class Cirugia(models.Model):
     nombre = models.CharField(max_length=30)
@@ -38,7 +35,9 @@ class Cirugia(models.Model):
 
 
 class Cirugia_Planificada(models.Model):
-    cirugia = models.OneToOneField(Cirugia,on_delete=models.CASCADE)
+    cirugia = models.ForeignKey(Cirugia,on_delete=models.CASCADE)
+    fecha = models.DateField(default=date.today,unique=True)
+    quirofano = models.ForeignKey(Quirofano,on_delete=models.CASCADE)
     cirujano = models.ForeignKey(Cirujano,on_delete=models.CASCADE)
     paciente = models.OneToOneField(Paciente, on_delete=models.CASCADE)
     descripcion = models.TextField(max_length=150)

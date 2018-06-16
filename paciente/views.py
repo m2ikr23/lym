@@ -16,7 +16,7 @@ from users.models import Country
 
 
 class CrearView(CreateView):
-    success_url = reverse_lazy('users:login')
+    success_url = reverse_lazy('users:notificacion')
     template_name = 'paciente/registro_paciente.html'
     model = Paciente
     form_class = CreateForm

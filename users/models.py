@@ -33,12 +33,12 @@ class User (AbstractBaseUser,PermissionsMixin):
 
     email = models.CharField(max_length=50, unique=True)
     first_name=models.CharField(max_length=100,verbose_name='nombre')
-    dni = models.CharField(max_length=16)
+    dni = models.CharField(max_length=16,unique=True)
     last_name = models.CharField(max_length=100,verbose_name='apellido')
     sex = models.CharField(max_length=2, choices = GENERO_CHOICES,verbose_name='sexo')
     phone = models.CharField(max_length=16,verbose_name='telefono')
     address = models.CharField(max_length=100,verbose_name='dirección')
-    birthdate = models.DateField(default= date.today,verbose_name='cumpleaños' )
+    birthdate = models.DateField(default= date.today,verbose_name='Fecha de nacimiento' )
     avatar = models.ImageField(upload_to = 'pic_folder/', default = 'pic_folder/None/user.png')
     is_pacient = models.BooleanField(default=False)
     is_medical = models.BooleanField(default=False)
@@ -56,7 +56,7 @@ class User (AbstractBaseUser,PermissionsMixin):
 
   
     def __str__(self):
-        return self.first_name
+        return '%s - %s' %(self.first_name,self.dni)
 
 
 
@@ -66,4 +66,4 @@ class Country(models.Model):
     country_fix = models.PositiveIntegerField(unique = True, primary_key=True )
 
     def __str__(self):
-        return self.country
+        return '+' + self.country_fix.__str__() + ' - ' + self.country

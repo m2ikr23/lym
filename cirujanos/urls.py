@@ -22,6 +22,7 @@ urlpatterns = [
     path('',include('users.urls'),name='users'),
     path('paciente/',include('paciente.urls'),name='paciente'),
     path('cirujano/',include('cirujano.urls'),name='cirujano'),
+    path('clinica/',include('clinica.urls'),name='clinica'),
     path('admin/', admin.site.urls),
     path('jsi18n/', JavaScriptCatalog.as_view(), name='javascript-catalog'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

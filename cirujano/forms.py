@@ -1,25 +1,25 @@
 from django.forms import ModelForm
 from django import forms
-from .models import Cirujano
+from .models import Cirujano,Cirugia_Planificada
+from users.forms import CreateForm as Create
 
-class CreateForm(forms.ModelForm):
-    email = forms.EmailField( widget = forms.EmailInput)
-    password = forms.CharField(max_length=20,min_length=8,widget=forms.PasswordInput())
-    repeat_password = forms.CharField(max_length=20,min_length=8,widget=forms.PasswordInput())
-    birthdate = forms.CharField(widget=forms.DateTimeInput())
-   
+class CreateForm(Create):
+
     class Meta:
         model = Cirujano
-        fields = ['first_name','last_name','dni','birthdate','especialidad','address',
-                    'email','password']
-
-    def clean_repeat_password(self):
-        value_pass = self.cleaned_data['password']
-        value_pass2 = self.cleaned_data['repeat_password']
-        if value_pass2 != value_pass:
-            raise forms.ValidationError('Las password no es igual, vuelva a escribir la password') 
-        value_pass
+        fields = ['first_name','last_name','dni','sex','birthdate','especialidad','address','phone',
+                    'email','repeat_email','password','repeat_password']
 
     def __init__(self, *args, **kwargs):
         super(CreateForm, self).__init__(*args, **kwargs)
         self.fields['birthdate'].widget.attrs.update( {'id':'fecha_selec', 'class':'datepicker' } )
+
+class PlanificarForm(forms.ModelForm):
+
+    class Meta:
+        model = Cirugia_Planificada
+        fields = ['cirugia','fecha','quirofano','cirujano','paciente','descripcion']
+
+    def __init__(self, *args, **kwargs):
+        super(PlanificarForm, self).__init__(*args, **kwargs)
+        self.fields['fecha'].widget.attrs.update( {'id':'fecha_select', 'class':'datepicker1' } )

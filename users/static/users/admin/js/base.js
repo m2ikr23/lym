@@ -6,16 +6,12 @@ $(function () {
     var instances = M.FormSelect.init(elems, options);
   });
 
-	
-
 
 	$(document).ready(function() {
     M.updateTextFields();
 	});
 	
-	$(document).ready(function(){
-    $('select').formSelect();
-  });      
+    
 	$('.subnavbar').find ('li').each (function (i) {
 	
 		var mod = i % 3;

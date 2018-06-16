@@ -1,0 +1,40 @@
+{% extends "admin/formularios.html" %}
+{% block titulo %}
+Solicitar cita
+{% endblock %}
+
+{% block content %}
+
+<form class="form" action="" method="post">
+        {% csrf_token %} 
+ 
+    {% for field in form %}
+
+ <div class="row">
+   <div class="input-field col s12">
+     {% if field.errors %}
+        {{field.errors}}
+     {% endif %}
+    
+     {{field}}
+     
+     
+   <label class= "{% for class in field.label_clasess %} {{class}}  {% endfor %}"  for="{{ field.name }}">{{ field.label }}</label>
+   </div>
+ </div>
+
+ 
+ {% endfor %}
+ <div class="form-item   left-align col s8">
+        <button class = "btn-small red " href="{% url 'users:login' %}">Cancelar</a>
+  </div>
+ <div class="form-item left-align col s3">
+        <a class = "btn-small blueright-align" href="{% url 'users:login' %}" type="submit">Guardar</a>
+    </div>
+    
+  
+</form>
+
+
+
+ {% endblock %}

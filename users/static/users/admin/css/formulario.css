@@ -24,19 +24,15 @@ body{
 }
 
 .content {
-
+    display:block;
     margin-top: 10%;
     padding: 5% 10% 10%;
 }
 
-.row.form-input {
-    width: 40%;
-    margin: 2% 5% 0% 5%;
-    float: left;
-}
 
 
 .img-content {
+   
     padding: 0% 30% 10%;
 }
 

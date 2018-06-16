@@ -1,0 +1,24 @@
+{% extends "admin/template_users.html" %}
+
+{% block card%}
+<div class="card">
+        <div class="card-image">
+          
+          <img class="circle responsive-img" src= '{{MEDIA_URL}}{{user.avatar}}' >
+          <h5 class="center-align">{{user.get_short_name|capfirst}}</h5>
+          <a class="btn-floating halfway-fab waves-effect waves-light btn-small"><i class="material-icons">add</i></a>
+        </div>
+        <div class="card-content">
+            {% block card-content %}
+              
+            {% endblock card-content %}
+                            
+        </div>
+      </div>
+    {% endblock %}
+
+    {% block centro %}
+   
+    {% endblock %}
+
+    

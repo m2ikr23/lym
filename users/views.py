@@ -1,14 +1,15 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy 
-from django.views.generic import View, DetailView
-from django.views.generic.edit import CreateView,UpdateView
+from django.views.generic import View, DetailView,ListView
+from django.views.generic.edit import CreateView, UpdateView,DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import authenticate,login,logout 
 from django.contrib.auth.decorators import login_required
 from .forms import LoginForm, CreateForm,ImageUploadForm,UpdateUserForm
 
 from .models import User
+from cirujano.models import Cirujano
 
 class LoginView(View):
 
@@ -19,7 +20,7 @@ class LoginView(View):
     def get(self,request,*args,**kwargs):
 
         if request.user.is_authenticated:
-            return redirect('users:dashboard')
+            return redirect('cirujano:dashboard')
 
         return render(request,self.template,self.get_context() )
     
@@ -30,8 +31,9 @@ class LoginView(View):
         user = authenticate(username=email_post, password=password_post)
 
         if user is not None:
-                login(request,user)
-                return redirect('users:dashboard')
+            login(request,user)
+            return redirect('cirujano:dashboard')
+
         else:
             self.message = 'email o password incorrecto '
         return render(request,self.template,self.get_context() )
@@ -46,7 +48,7 @@ def logoutView(request):
 
 
 class CrearView(CreateView):
-    success_url = reverse_lazy('users:login')
+    success_url = reverse_lazy('users:notificacion')
     template_name = 'users/create.html'
     model = User
     form_class = CreateForm
@@ -103,8 +105,20 @@ class DashboardView(LoginRequiredMixin,View):
     login_url = 'users:login'
 
     def get(self,request,*args,**kwargs):
-      
-        return render(request, 'users/dashboard.html',{})
+        if(request.user.is_medical):
+            return render(request, 'cirujano/dash_cirujano.html',{})
+        else: 
+            return render(request, 'admin/dash_admin.html',{})
+
+
+class CirujanosView(ListView):
+    model = Cirujano
+    template_name = "admin/dash_cirujanos.html"
+    context_object_name = "cirujanos"
+
+
+def clinicaDashView(request):
+    return render(request,'admin/dash_clinica.html')
 
 class ShowView(DetailView):
     model = User
@@ -124,4 +138,11 @@ class ShowView(DetailView):
 
         return context
    
+
+class CirujanoDeleteView(DeleteView):
+    model = Cirujano
+    template_name = "users/object_delete_confirm.html"
+    success_url = reverse_lazy('users:cirujanos')
     
+def notificacionView(request):
+ return render(request,'users/notificacion.html')

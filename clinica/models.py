@@ -1,11 +1,13 @@
 from django.db import models
+from datetime import date
 
 class Clinica(models.Model):
 
+    id = models.CharField(max_length=8,primary_key="True")
     nombre = models.CharField(max_length=50)
     direccion = models.CharField(max_length=150)
     telefono = models.CharField(max_length=16)
-    correo = models.EmailField(max_length = 50, unique=True)
+    email = models.EmailField(max_length = 50, unique=True)
     is_active = models.BooleanField(default = True)
 
     def __str__(self):
@@ -14,7 +16,7 @@ class Clinica(models.Model):
 
     def idNombre(self):
 
-        return self.pk + " " + self.nombre
+        return '%s - %s' %(self.id ,self.nombre)
 
 
 class Quirofano(models.Model):

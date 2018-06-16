@@ -1,0 +1,13 @@
+{% extends "admin/dashboard.html" %}
+
+{% block card-content %}
+<div class="collection ">
+        <a href="{% url 'clinica:registro' %}"class="collection-item center-align">Registrar Clínica</a>
+        <a href="{% url 'clinica:consultar' %}" class="collection-item center-align">Consultar Clínica</a>
+    </div>    
+{% endblock card-content %}
+
+{% block centro  %}
+
+
+{% endblock centro %}

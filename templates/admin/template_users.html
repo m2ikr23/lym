@@ -8,26 +8,45 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link href="{% static "users/admin/css/materialize.min.css"  %} " rel="stylesheet">
 <link href="{% static "users/admin/font/iconfont/material-icons.css"  %} " rel="stylesheet">
-<link href="{% static "users/admin/css/style.css"  %} "  rel="stylesheet">
 <link href="{% static "users/admin/css/dash.css"  %} "  rel="stylesheet">
 </head>
 <body>
         <ul id="dropdown1" class="dropdown-content">
                 <li><a href="#!">opciones</a></li>
                 <li class="divider"></li>
-                <li><a href=" {% url 'users:logout' %} ">Salir</a></li>
+                <li> <a class="waves-effect waves-light modal-trigger" href="#modal1">Cerrar sesión</a>
+                </li>
               </ul>
+             
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Cerrar sesión</h4>
+      <p align="center">¿Estás seguro de que quieres cerrar sesión? </p>
+    </div>
+    <div class="modal-footer">
+      <a href=" {% url 'users:logout' %} ">Sí</a>
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">No</a>
+    </div>
+  </div>
+          
     <nav>
-      <div class="nav-wrapper blue">
+      <div class="nav-wrapper {% if user.is_staff %}black {% endif %} {% if user.is_medical %} blue {% endif %}">
                  
           <a href="{% url 'users:home' %}" class="brand-logo">MV World</a>
-            <span class="left-align" style=" margin-left: 150px;"><a>Hola {{user.get_short_name }} </a></span>
+            <span class="left-align" style=" margin-left: 150px;"><a class="waves-effect waves-light" href="{% url 'users:dashboard' %}">Hola {{user.get_short_name }} </a></span>
             
             <ul class="right hide-on-med-and-down">
-                    <li><a href="{% url 'cirujano:registro' %}">Cirujanos</a></li>
-                    <li><a href="#">Clínicas</a></li>
-                    <li><a href="#">Quirófanos</a></li>
-                    <li><a href="#">Cirugias</a></li>
+                {% if user.is_staff %}
+                    <li><a class="waves-effect waves-light" href="{% url 'users:cirujanos' %}">Cirujanos</a></li>
+                    <li><a class="waves-effect waves-light" href= "{% url 'users:clinicas' %}">Clínicas</a></li>
+                    <li><a class="waves-effect waves-light" href="#">Quirófanos</a></li>
+                    <li><a class="waves-effect waves-light" href="#">Cirugias</a></li>
+                    {% endif %}
+
+                    {% if user.is_medical %}
+                    <li><a class="waves-effect waves-light" href="#">Consultar Agenda</a></li>
+                    {% endif %}
                     <!-- Dropdown Trigger -->
                     <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><i class="material-icons right">format_list_bulleted</i></a></li>
                   </ul>
@@ -35,16 +54,16 @@
               </nav>
                       
 <div class="container" style="padding: 0 px; margin-left: 0px ">
-  <div class="row" style="width: 100%">
-    <div class="col s3">
+  <div class="row" style="width: 140%">
+    <div class="card-user col s3">
         {% block card %} {% endblock %}
         
       </div>
         
-      <div class="col s9 push3">
+      <div class="col s9 ">
           {% block centro %}{% endblock %}
         </div>
-      
+
     </div>
       
     </div>
@@ -64,7 +83,6 @@
     <!-- /footer --> 
     <!-- Le javascript
 ================================================== --> 
-    <!-- Placed at the end of the document so the pages load faster --> 
     <script src="{% static "users/admin/js/jquery-1.7.2.min.js"  %}"></script> 
     <script type="text/javascript" >
 
@@ -72,15 +90,17 @@
 		var elems = document.querySelectorAll('.dropdown-trigger');
 		var instances = M.Dropdown.init(elems, {hover:true});
 		});
-		
-         
+
+    $(document).ready(function(){
+    $('.modal').modal();
+       });
   </script>
     <script src="{% static "users/admin/js/chart.min.js" %}"type="text/javascript"  ></script> 
     <script src="{% static "users/admin/js/materialize.js" %}"></script>
     <script language="javascript" type="text/javascript" src="{% static "users/admin/js/full-calendar/fullcalendar.min.js"  %}"></script>
     <script src="{% static "users/admin/js/base.js" %}"></script> 
-    <script>
-       
-    </script>
+   {% block scripts %}
+     
+   {% endblock scripts %}
 </body>
 </html>

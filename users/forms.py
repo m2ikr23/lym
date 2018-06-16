@@ -7,20 +7,19 @@ class LoginForm(forms.Form):
 
 
 class CreateForm(forms.ModelForm):
-    email = forms.EmailField( widget = forms.EmailInput)
+    email = forms.EmailField()
     repeat_email = forms.EmailField(widget = forms.EmailInput,
-                                        label="Email ( denuevo )")
+                                        label="Verificar email")
     password = forms.CharField(max_length=20,min_length=8,
                                     widget=forms.PasswordInput())
     repeat_password = forms.CharField(max_length=20,min_length=8,
                                          widget=forms.PasswordInput(),
-                                                label="Password ( denuevo )")
-    birthdate = forms.CharField(widget=forms.DateInput,label='Cumpleaños')
-    prefix = forms.CharField(max_length=5, empty_value= '58') 
+                                                label="Verificar password ")
+    birthdate = forms.CharField(widget=forms.DateInput,label='Fecha de nacimiento')
     class Meta:
         model = User
-        fields = ['first_name','last_name','dni','address','prefix','phone','sex','birthdate',
-                    'email','password']
+        fields = ['first_name','last_name','dni','address','phone','sex','birthdate',
+                    'email','repeat_email','password','repeat_password']
 
 
     def clean_repeat_email(self):
@@ -42,7 +41,7 @@ class CreateForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(CreateForm, self).__init__(*args, **kwargs)
         self.fields['birthdate'].widget.attrs.update( {'id':'fecha_selec',
-                                                    'class':'datepicker' } )
+                                                    'class':'datepicker' } )                         
 
 class ImageUploadForm(forms.ModelForm):
     """Image upload form."""
@@ -54,9 +53,9 @@ class ImageUploadForm(forms.ModelForm):
 
 class UpdateUserForm(forms.ModelForm):
 
-    password = forms.CharField(max_length=20,min_length=8,widget=forms.PasswordInput())
-    repeat_password = forms.CharField(max_length=20,min_length=8,widget=forms.PasswordInput())
-    birthdate = forms.CharField(widget=forms.DateInput(format='%m/%d/%Y'))
+    password = forms.CharField(max_length=20,min_length=8,widget=forms.PasswordInput(),required=False)
+    repeat_password = forms.CharField(max_length=20,min_length=8,widget=forms.PasswordInput(),required=False, label="Verificar password")
+    birthdate = forms.CharField(widget=forms.DateInput(format='%Y-%m-%d'),label="Fecha de nacimiento")
 
     class Meta:
 

@@ -1,0 +1,21 @@
+{% extends "admin/formularios.html" %}
+{% block titulo %}
+Inicio de sesión
+{% endblock %}
+
+{% block content %}
+{% if message %}
+<blockquote class="red-text text-darken-3"> {{message}} </blockquote>
+
+{% endif %}
+
+<form action="" method="post">
+  
+    {%csrf_token%}
+    {{ form.as_p }}
+    <button align="center" class="btn btn-sm" type="submit">Iniciar Sesión</button>
+</form>
+ 
+
+
+{% endblock %}

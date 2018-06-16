@@ -1,0 +1,41 @@
+{% extends "admin/dashboard.html" %}
+
+{% block card-content %}
+<div class="collection ">
+        <a href="{% url 'cirujano:registro' %}"class="collection-item center-align">Registrar cirujanos</a>
+        <a href="#" class="collection-item center-align">Desactivar Cirujanos</a>
+    </div>    
+{% endblock card-content %}
+
+{% block centro  %}
+<div class="header-table "><h2 class="center-align">Lista de cirujanos activos</h2></div>
+<div id="tabla-ciru" >
+ 
+<table  class="highlight responsive-table centered " >
+  <thead class="header grey">
+    <tr>
+      <th>Nombre</th>
+      <th>Especialidades</th>
+      <th>Correo</th>
+      <th>Telefono</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  {% for cirujano in cirujanos %}
+  <thead>
+    <tr>
+      <th><a href="#">{{cirujano|capfirst}}</a></th>
+      <th>{% for especial in cirujano.especialidad.all  %}
+        {{especial.nombre|capfirst}},
+      {% endfor %}</th>
+      <th>{{cirujano.email}}</th>
+      <th>{{cirujano.phone}}</th>
+      <th><a href="{% url 'users:delete' cirujano.id  %}">Desactivar</a></th>
+    </tr>
+  </thead>
+  {% endfor %}
+
+</div>
+
+</table>
+{% endblock centro %}

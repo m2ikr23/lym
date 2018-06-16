@@ -8,10 +8,15 @@ class CreateForm(Create):
    
     class Meta:
         model = Paciente
-        fields = ['first_name','last_name','dni','pais','codigo_Postal','address','phone','sex','birthdate',
+        fields = ['first_name','last_name','dni','pais','phone','codigo_Postal','address','sex','birthdate',
                     'email','repeat_email','password','repeat_password']
 
-
+    
+    def __init__(self, *args, **kwargs):
+        super(CreateForm, self).__init__(*args, **kwargs)
+        self.fields['pais'].widget.attrs.update( {'id':'select_pais',
+                                                    'class':'select' } )
+    
 
 class SolicitarCitaForm(forms.Form):
 
