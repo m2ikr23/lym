@@ -1,0 +1,13 @@
+{% extends "admin/dashboard.html" %}
+
+{% block card-content %}
+<div class="collection ">
+        <a href="{% url 'paciente:incluirPaquete' %}"class="collection-item center-align">Agregar Paquete</a>
+        <a href="{% url 'paciente:paquetes' %}" class="collection-item center-align">Consultar Paquetes</a>
+    </div>    
+{% endblock card-content %}
+
+{% block centro  %}
+
+
+{% endblock centro %}

@@ -2,9 +2,9 @@
 {% block card-content %}
    <div class="collection ">
             <a href=" {% url 'users:update' %} " class="collection-item center-align">Actualizar datos</a>
-            <a href=" {% url 'users:create' %}" class="collection-item center-align">Crear administrador</a>
-            <a href="#!" class="collection-item center-align">especialidades</a>
-            <a href="#!" class="collection-item center-align">paquetes</a> 
+            <a href=" {% url 'users:create' %}" class="collection-item center-align">Agregar administrador</a>
+            <a href=" {% url 'users:especialidades' %}" class="collection-item center-align">especialidades</a>
+            <a href=" {% url 'users:paquetes' %}" class="collection-item center-align">paquetes</a> 
         </div>           
 {% endblock card-content %}
 

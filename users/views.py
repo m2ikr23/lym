@@ -120,6 +120,19 @@ class CirujanosView(ListView):
 def clinicaDashView(request):
     return render(request,'admin/dash_clinica.html')
 
+def quirofanoDashView(request):
+    return render(request,'admin/dash_quirofano.html')
+
+def cirugiaDashView(request):
+    return render(request,'admin/dash_cirugias.html')
+
+def especialidadDashView(request):
+    return render(request,'admin/dash_especialidad.html')
+
+def paqueteDashView(request):
+    return render(request,'admin/dash_paquetes.html')
+
+
 class ShowView(DetailView):
     model = User
     template_name = 'users/show.html'

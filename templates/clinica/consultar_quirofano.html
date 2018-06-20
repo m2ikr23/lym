@@ -1,0 +1,99 @@
+{% extends "admin/dashboard.html" %}
+
+{% block card-content %}
+<div class="collection ">
+  <div class="collection ">
+    <a href="{% url 'clinica:incluir' %}"class="collection-item center-align">Incluir Quirofano</a>
+    <a href="{% url 'clinica:quirofanos' %}" class="collection-item center-align">Consultar Quirofano</a>
+</div>    
+    </div>    
+{% endblock card-content %}
+
+{% block centro  %}
+
+<div class="header-table "><h2 class="center-align">Consultar Quirófanos</h2></div>
+<div id="tabla-clinica" >
+  <div class="input-field col s4">
+<select name="selectclinica" id="clinica">
+       <option value="" disabled selected>Clinica</option>
+        {% for clinica in clinicas %}
+          <option value="{{clinica.id}}">{{clinica.nombre}}</option>
+        {% endfor %}
+          
+      </select>
+  </div>
+<div id="list">
+<table  class="highlight responsive-table centered " >
+  <thead class="header grey">
+    <tr>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  {% for quirofano in quirofanos %}
+  <thead>
+    <tr>
+      <th><a>{{quirofano.idNombre}}</a></th>
+      <th><a>{{quirofano.descripcion}}</a></th>
+      
+      <th><a href="{% url 'clinica:updateQuiro' quirofano.id  %}" > Actualizar Clínica </a></th>
+    </tr>
+  </thead>
+  {% endfor %}
+
+</table>
+</div>
+{% endblock centro %}
+
+{% block scripts %}
+<script>
+
+  $(document).ready(function(){
+    $('select').formSelect();
+  });
+
+</script>
+
+<script>
+
+    $(document).ready(function(){
+      $('select[name=selectclinica]').change(function(){
+       var id = $('select[name=selectclinica]').val();
+       $.ajax({
+         data: {'id':id},
+         url:'buscarQuiro/',
+         type: 'get',
+         success: function(data){
+           html = "";
+           console.log(data)
+           for(var i = 0; i < data.length ; i++){
+            console.log(data[i].fields.nombre);
+
+             html='<table  class="highlight responsive-table centered " >'+
+                    '<thead class="header grey">'+
+                          '<tr>'+
+                            '<th>Nombre</>'+
+                             '<th>Descripción</th>'+
+                                  '<th>Acciones</th>'+
+                           '</tr>'+
+                    '</thead>'+
+                    '<thead>'+
+                      '<tr>'+
+                        '<th>'+'<a href="#">'+data[i].fields.nombre+'</a>'+'</th>'+
+                        '<th>'+'<a>'+ data[i].fields.descripcion + '</a>'+'</th>'+
+                        '<th><a href='+'updateQuiro/'+ data[i].pk +'/ >Actualizar Clínica </a></th>'+
+                      '</tr>'+
+                    '</thead>'+
+                  '</table>'
+           }
+
+           $('#list').html(html);
+         }
+       })
+      });
+    });
+    
+  </script>
+
+{% endblock %}

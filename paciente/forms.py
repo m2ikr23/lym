@@ -1,7 +1,7 @@
 from django.forms import ModelForm
 from django import forms
 from users.forms import CreateForm as Create
-from .models import Paciente
+from .models import Paciente,Paquete
 
 class CreateForm(Create):
 
@@ -17,6 +17,21 @@ class CreateForm(Create):
         self.fields['pais'].widget.attrs.update( {'id':'select_pais',
                                                     'class':'select' } )
     
+
+
+class CreatePaqueteForm(forms.ModelForm):
+
+    class Meta:
+        model = Paquete
+        fields = ['id','nombre','servicios','precio']
+
+
+class UpdatePaqueteForm(forms.ModelForm):
+
+    class Meta: 
+        model = Paquete
+        fields = ['nombre','servicios','precio']
+
 
 class SolicitarCitaForm(forms.Form):
 

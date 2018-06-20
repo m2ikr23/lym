@@ -35,3 +35,22 @@ class Historia(models.Model):
     def __str__(self):
         return self.paciente
 
+class Paquete(models.Model):
+ 
+    id = models.CharField(max_length=8,primary_key=True)
+    nombre = models.CharField(max_length=50)
+    servicios = models.ManyToManyField('Servicio')
+    precio = models.IntegerField()
+
+    def __str__(self):
+        return self.nombre
+
+
+class Servicio(models.Model):
+
+    nombre = models.CharField(max_length=120, verbose_name="Nombre")
+    descripcion = models.TextField(max_length=150, verbose_name="Descripción")
+    precio = models.FloatField()
+
+    def __str__(self):
+        return self.nombre

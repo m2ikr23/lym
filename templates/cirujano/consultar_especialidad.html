@@ -1,0 +1,36 @@
+{% extends "admin/dashboard.html" %}
+
+{% block card-content %}
+<div class="collection ">
+    <a href="{% url 'cirujano:incluirEspecialidad' %}"class="collection-item center-align">Registrar Especialidad</a>
+    <a href="{% url 'cirujano:especialidades' %}" class="collection-item center-align">Consultar Especialidades</a>
+    </div>    
+{% endblock card-content %}
+
+{% block centro  %}
+<div class="header-table "><h2 class="center-align">Consultar Especialidades</h2></div>
+<div id="tabla-clinica" >
+ 
+<table  class="highlight responsive-table centered " >
+  <thead class="header grey">
+    <tr>
+      <th>Nombre</th>
+      <th>Descripcion</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  {% for especialidad in especialidades %}
+  <thead>
+    <tr>
+      <th><a href="#">{{especialidad.nombre|capfirst}}</a></th>
+      <th>{{especialidad.descripcion}}</th>
+      <th><a href="{% url 'cirujano:updateEspcialidad' especialidad.id  %}"> Actualizar especialidad</a></th>
+    </tr>
+  </thead>
+  {% endfor %}
+
+</div>
+
+</table>
+
+{% endblock centro %}

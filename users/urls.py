@@ -14,5 +14,9 @@ urlpatterns = [
     path('show/<int:pk>/',views.ShowView.as_view(),name='show'),
     path('',views.homeView, name='home'),
     path('dashboard/clinicas',views.clinicaDashView, name='clinicas'),
+    path('dashboard/quirofanos',views.quirofanoDashView, name='quirofanos'),
+    path('dashboard/cirugias',views.cirugiaDashView, name='cirugias'),
+    path('dashboard/especialidad',views.especialidadDashView, name='especialidades'),
+    path('dashboard/paquetes',views.paqueteDashView, name='paquetes'),
     path('exito',views.notificacionView, name='notificacion')
 ]

@@ -7,10 +7,11 @@ from django.views.generic.edit import CreateView,UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import authenticate,login,logout 
 from django.contrib.auth.decorators import login_required
-
-from .forms import CreateForm
+from django.views.generic.edit import CreateView, UpdateView,DeleteView
+from django.views.generic import View, DetailView,ListView
+from .forms import CreateForm,CreatePaqueteForm,UpdatePaqueteForm
 from .forms import SolicitarCitaForm
-from .models import Paciente
+from .models import Paciente,Paquete
 from users.models import Country
 # Create your views here.
 
@@ -27,6 +28,32 @@ class CrearView(CreateView):
         self.object.is_pacient = True
         self.object.save()
         return HttpResponseRedirect(self.get_success_url())
+
+class CrearPaqueteView(CreateView):
+    success_url = reverse_lazy('users:notificacion')
+    template_name = 'paciente/incluir_paquete.html'
+    model = Paquete
+    form_class = CreatePaqueteForm
+
+    def form_valid(self,form):
+        self.object = form.save(commit=False)
+        self.object.save()
+        form.save_m2m()
+        return HttpResponseRedirect(self.get_success_url())
+
+class UpdatePaqueteView(UpdateView):
+
+    model = Paquete
+    template_name ='paciente/actualizar_paquete.html'
+    success_url = reverse_lazy('users:paquetes')
+    form_class = UpdatePaqueteForm
+
+
+class PaqueteView(ListView):
+    model = Paquete
+    template_name = "paciente/consultar_paquete.html"
+    context_object_name = "paquetes"
+
 
 def solicitarCitaView(request):
     form = SolicitarCitaForm

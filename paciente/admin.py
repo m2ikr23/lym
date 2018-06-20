@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.forms import CharField, Form, PasswordInput
-from .models import Paciente,Historia
+from .models import Paciente,Historia,Paquete,Servicio
 # Register your models here.
 
 class PacienteAdmin(admin.ModelAdmin):
@@ -25,3 +25,5 @@ class PacienteAdmin(admin.ModelAdmin):
 
 admin.site.register(Paciente,PacienteAdmin)
 admin.site.register(Historia)
+admin.site.register(Paquete)
+admin.site.register(Servicio)

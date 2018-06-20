@@ -40,8 +40,8 @@
                 {% if user.is_staff %}
                     <li><a class="waves-effect waves-light" href="{% url 'users:cirujanos' %}">Cirujanos</a></li>
                     <li><a class="waves-effect waves-light" href= "{% url 'users:clinicas' %}">Clínicas</a></li>
-                    <li><a class="waves-effect waves-light" href="#">Quirófanos</a></li>
-                    <li><a class="waves-effect waves-light" href="#">Cirugias</a></li>
+                    <li><a class="waves-effect waves-light" href= "{% url 'users:quirofanos' %}">Quirófanos</a></li>
+                    <li><a class="waves-effect waves-light" href="{% url 'users:cirugias' %}">Cirugias</a></li>
                     {% endif %}
 
                     {% if user.is_medical %}
@@ -84,6 +84,10 @@
     <!-- Le javascript
 ================================================== --> 
     <script src="{% static "users/admin/js/jquery-1.7.2.min.js"  %}"></script> 
+
+    {% block scripts %}{% endblock %}
+
+
     <script type="text/javascript" >
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -99,8 +103,6 @@
     <script src="{% static "users/admin/js/materialize.js" %}"></script>
     <script language="javascript" type="text/javascript" src="{% static "users/admin/js/full-calendar/fullcalendar.min.js"  %}"></script>
     <script src="{% static "users/admin/js/base.js" %}"></script> 
-   {% block scripts %}
-     
-   {% endblock scripts %}
+   
 </body>
 </html>

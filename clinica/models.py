@@ -21,6 +21,7 @@ class Clinica(models.Model):
 
 class Quirofano(models.Model):
 
+    id = models.CharField(max_length=8,primary_key="True")
     clinica = models.ForeignKey(Clinica,on_delete=models.CASCADE,limit_choices_to= {'is_active':True} )
     nombre = models.CharField(max_length=50)
     descripcion = models.TextField(max_length=150)
@@ -29,3 +30,7 @@ class Quirofano(models.Model):
     def __str__(self):
     
         return self.nombre 
+        
+    def idNombre(self):
+
+        return '%s - %s' %(self.id ,self.nombre)

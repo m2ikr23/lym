@@ -9,9 +9,11 @@ class CreateForm(forms.ModelForm):
    
 class CreateQuirofanoForm(forms.ModelForm):
 
- class Meta:
+    class Meta:
         model = Quirofano
-        fields = ['clinica','nombre','descripcion']
+        fields = ['id','clinica','nombre','descripcion']
+
+
 
 class UpdateClinicaForm(forms.ModelForm):
 
@@ -19,4 +21,10 @@ class UpdateClinicaForm(forms.ModelForm):
 
         model = Clinica
         fields = ['nombre','direccion','telefono','email']
-   
+
+class UpdateQuirofanoForm(forms.ModelForm):
+
+    class Meta:
+
+        model = Quirofano
+        fields = ['nombre','descripcion']

@@ -5,7 +5,7 @@ from paciente.models import Paciente
 from datetime import date
 
 class Especialidad(models.Model):
-    
+    id = models.CharField(max_length=8, primary_key=True)
     nombre = models.CharField(max_length=30)
     descripcion = models.TextField()
 
@@ -27,7 +27,18 @@ class Cirujano(User):
 
 
 class Cirugia(models.Model):
+    TIPO=(
+        ('OM','Cirugía Oral y Maxilofacial'),
+        ('OO','Oftalmología y Oculopatía'),
+        ('OT','Otorrinolaringología'),
+        ('T','Traumatología'),
+        ('PE','Cirugía plastica y estética'),
+        ('U','Urología'),
+        ('CG','Cirugía General')
+    )
+    id = models.CharField(max_length=8, primary_key=True)
     nombre = models.CharField(max_length=30)
+    tipo = models.CharField(max_length=50,choices=TIPO)
     descripcion = models.TextField(max_length=150)
 
     def __str__(self):
