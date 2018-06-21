@@ -72,3 +72,11 @@ class UpdateUserForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(UpdateUserForm, self).__init__(*args, **kwargs)
         self.fields['birthdate'].widget.attrs.update( {'id':'fecha_selec', 'class':'datepicker' } )
+
+class DesactivateUserForm(forms.ModelForm):
+
+    class Meta:
+
+        model = User
+        fields = ['is_active']
+   

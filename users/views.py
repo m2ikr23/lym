@@ -6,7 +6,7 @@ from django.views.generic.edit import CreateView, UpdateView,DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import authenticate,login,logout 
 from django.contrib.auth.decorators import login_required
-from .forms import LoginForm, CreateForm,ImageUploadForm,UpdateUserForm
+from .forms import LoginForm, CreateForm,ImageUploadForm,UpdateUserForm,DesactivateUserForm
 
 from .models import User
 from cirujano.models import Cirujano
@@ -159,3 +159,19 @@ class CirujanoDeleteView(DeleteView):
     
 def notificacionView(request):
  return render(request,'users/notificacion.html')
+
+
+
+class DesactivateView(UpdateView):
+
+    model = User
+    template_name ='users/desactivate.html'
+    success_url = reverse_lazy('users:dashboard')
+    form_class = DesactivateUserForm 
+
+    def form_valid(self,form):
+        self.object = form.save(commit=False)
+        self.object.is_active = False
+        self.object.save()
+        return HttpResponseRedirect(self.get_success_url())
+           

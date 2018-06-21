@@ -7,6 +7,7 @@ urlpatterns = [
     path('logout/',views.logoutView,name='logout'),
     path('create/',views.CrearView.as_view(),name='create'),
     path('update/',views.UpdateUserView.as_view(),name='update'),
+    path('desactivate/<int:pk>/',views.DesactivateView.as_view(),name='desactivate'),
     path('delete/<int:pk>/',views.CirujanoDeleteView.as_view(),name='delete'),
     path('edit/',views.editFotoView.as_view() ,name='edit'),
     path('dashboard/',views.DashboardView.as_view(),name='dashboard'),
