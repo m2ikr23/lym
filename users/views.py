@@ -166,7 +166,7 @@ class DesactivateView(UpdateView):
 
     model = User
     template_name ='users/desactivate.html'
-    success_url = reverse_lazy('users:dashboard')
+    success_url = reverse_lazy('users:cirujanos')
     form_class = DesactivateUserForm 
 
     def form_valid(self,form):
@@ -174,4 +174,15 @@ class DesactivateView(UpdateView):
         self.object.is_active = False
         self.object.save()
         return HttpResponseRedirect(self.get_success_url())
-           
+
+class ActivateView(UpdateView):
+
+    model = User
+    template_name ='users/activate.html'
+    success_url = reverse_lazy('users:cirujanos')
+    form_class = DesactivateUserForm 
+    def form_valid(self,form):
+        self.object = form.save(commit=False)
+        self.object.is_active = True
+        self.object.save()
+        return HttpResponseRedirect(self.get_success_url())

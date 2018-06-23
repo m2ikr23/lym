@@ -12,13 +12,17 @@
 </head>
 <body>
         <ul id="dropdown1" class="dropdown-content">
-                <li><a href="#!">opciones</a></li>
-                <li class="divider"></li>
+          
+          {% if not user.is_medical %}
+           <li> <a class="waves-effect waves-light modal-trigger" href="#modal2">Desactivar Cuenta</a>
+          {% endif %}
+            
+              <li class="divider"></li>
                 <li> <a class="waves-effect waves-light modal-trigger" href="#modal1">Cerrar sesión</a>
                 </li>
               </ul>
              
-  <!-- Modal Structure -->
+  <!-- Modal activar -->
   <div id="modal1" class="modal">
     <div class="modal-content">
       <h4>Cerrar sesión</h4>
@@ -26,6 +30,18 @@
     </div>
     <div class="modal-footer">
       <a href=" {% url 'users:logout' %} ">Sí</a>
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">No</a>
+    </div>
+  </div>
+
+  <!-- Modal Desactivar -->
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <h4>Desactivar cuenta</h4>
+      <p align="center">¿Estás seguro de que quieres desactivar tu cuenta? </p>
+    </div>
+    <div class="modal-footer">
+      <a href=" {% url 'users:desactivate' user.id %} ">Sí</a>
       <a href="#!" class="modal-close waves-effect waves-green btn-flat">No</a>
     </div>
   </div>
