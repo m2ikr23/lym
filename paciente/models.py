@@ -1,6 +1,5 @@
 from django.db import models
 from users.models import User,Country
-# Create your models here.
 
 class Paciente(User):
 

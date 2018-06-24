@@ -47,7 +47,7 @@
   </div>
           
     <nav>
-      <div class="nav-wrapper {% if user.is_staff %}black {% endif %} {% if user.is_medical %} blue {% endif %}">
+      <div class="nav-wrapper {% if user.is_staff %}black {% endif %} {% if user.is_medical %} blue {% endif %} {% if user.is_pacient %} blue {% endif %}">
                  
           <a href="{% url 'users:home' %}" class="brand-logo">MV World</a>
             <span class="left-align" style=" margin-left: 150px;"><a class="waves-effect waves-light" href="{% url 'users:dashboard' %}">Hola {{user.get_short_name }} </a></span>
@@ -62,6 +62,12 @@
 
                     {% if user.is_medical %}
                     <li><a class="waves-effect waves-light" href="#">Consultar Agenda</a></li>
+                    {% endif %}
+
+                    {% if user.is_pacient %}
+                    <li><a class="waves-effect waves-light" href="{% url 'paciente:solicitar' %}">Solicitar cita</a></li>
+                    <li><a class="waves-effect waves-light" href="#">Cirujanos</a></li>
+                    <li><a class="waves-effect waves-light" href="#">Cirugias</a></li>
                     {% endif %}
                     <!-- Dropdown Trigger -->
                     <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><i class="material-icons right">format_list_bulleted</i></a></li>
@@ -104,7 +110,7 @@
     {% block scripts %}{% endblock %}
 
 
-    <script type="text/javascript" >
+  <script type="text/javascript" >
 
     document.addEventListener('DOMContentLoaded', function() {
 		var elems = document.querySelectorAll('.dropdown-trigger');

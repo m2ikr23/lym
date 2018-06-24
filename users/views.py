@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import LoginForm, CreateForm,ImageUploadForm,UpdateUserForm,DesactivateUserForm
 
 from .models import User
-from cirujano.models import Cirujano
+from cirujano.models import Cirujano,Cita
 
 class LoginView(View):
 
@@ -20,7 +20,7 @@ class LoginView(View):
     def get(self,request,*args,**kwargs):
 
         if request.user.is_authenticated:
-            return redirect('cirujano:dashboard')
+            return redirect('users:dashboard')
 
         return render(request,self.template,self.get_context() )
     
@@ -32,7 +32,7 @@ class LoginView(View):
 
         if user is not None:
             login(request,user)
-            return redirect('cirujano:dashboard')
+            return redirect('users:dashboard')
 
         else:
             self.message = 'email o password incorrecto '
@@ -106,8 +106,11 @@ class DashboardView(LoginRequiredMixin,View):
 
     def get(self,request,*args,**kwargs):
         if(request.user.is_medical):
-            return render(request, 'cirujano/dash_cirujano.html',{})
-        else: 
+            citas = Cita.objects.filter(medico = Cirujano.objects.get(pk=request.user.pk))
+            return render(request, 'cirujano/dash_cirujano.html',{'citas':citas})
+        if(request.user.is_pacient): 
+            return render(request, 'paciente/dash_paciente.html',{})
+        if(request.user.is_staff):
             return render(request, 'admin/dash_admin.html',{})
 
 

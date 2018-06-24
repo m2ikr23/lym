@@ -52,7 +52,9 @@ ul.errorlist {
 .card {
     background-color: #1f1f1ffa;
 }
-
+.card.cita{
+        background-color: #fefefffa;
+}
 .card-image {
     color: white;
     background-color: #000000e0;

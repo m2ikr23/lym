@@ -22,7 +22,7 @@ class Cirujano(User):
         if self.sex=='F':
             return '%s %s %s' %('Dra. ' , self.first_name, self.last_name)
         else:
-            return '%s %s %s' %('Dra. ' , self.first_name, self.last_name)
+            return '%s %s %s' %('Dr. ' , self.first_name, self.last_name)
  
 
 
@@ -58,3 +58,14 @@ class Agenda(models.Model):
   pass
 
 
+class Cita(models.Model):
+
+    paciente = models.OneToOneField(Paciente, on_delete=models.CASCADE)
+    medico = models.ForeignKey(Cirujano,on_delete=models.CASCADE,verbose_name="Médico cirujano")
+    fecha_solicitud = models.DateField(auto_now_add=True)
+    confirmada = models.BooleanField(default=False)
+    descripcion = models.TextField(max_length=150,verbose_name="Descripción")
+
+    def __str__(self):
+
+        return self.descripcion

@@ -7,7 +7,7 @@ from django.views.generic.edit import CreateView, UpdateView,DeleteView
 from django.views.generic import View, DetailView,ListView
 from .forms import CreateCirugiaForm,CreateEspecialidadForm,CreateForm,PlanificarForm,UpdateCirugiaForm,UpdateEspecialidadForm
 from .models import Cirugia,Cirugia_Planificada,Cirujano,Especialidad
-from users.views import DashboardView as Dash
+
 
 class CrearView(CreateView):
     success_url = reverse_lazy('cirujano:registro')
@@ -22,11 +22,6 @@ class CrearView(CreateView):
         self.object.save()
         form.save_m2m()
         return HttpResponseRedirect(self.get_success_url())
-
-class DashboardView(Dash):
-    
-    def log(self):
-        pass
 
 class planificarCirugiaView(CreateView):
     success_url = reverse_lazy('cirujano:dashboard')

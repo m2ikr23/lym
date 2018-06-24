@@ -1,80 +1,71 @@
 {% extends "admin/dashboard.html" %}
+
 {% block card-content %}
-   <div class="collection ">
-            <a href=" {% url 'users:update' %} " class="collection-item center-align">Actualizar datos</a>
-            <a href=" {% url 'users:create' %}" class="collection-item center-align">Registrar historia</a>
-            <a href="#!" class="collection-item center-align">Consultar historia</a>
-            <a href="{% url 'cirujano:planificar' %}" class="collection-item center-align">Planificar cirugia</a> 
-            <a href="#!" class="collection-item center-align">Consultar planificación</a> 
-        </div>           
-{% endblock card-content %}
+<div class="collection ">
+    <a href=" {% url 'users:update' %} " class="collection-item center-align">Actualizar datos</a>
+    <a href=" {% url 'users:create' %}" class="collection-item center-align">Registrar historia</a>
+    <a href="#!" class="collection-item center-align">Consultar historia</a>
+    <a href="{% url 'cirujano:planificar' %}" class="collection-item center-align">Planificar cirugia</a>
+    <a href="#!" class="collection-item center-align">Consultar planificación</a>
+</div>
+{% endblock card-content %} 
 
 {% block centro %}
 <section>
-        <ul id="info" class="collection">
-         <li class="collection-item">Dirección: {{user.address}} </li>
-         <li class="collection-item">Teléfono: {{user.phone}} </li>
-         <li class="collection-item">Fecha de nacimiento: {{user.birthdate}} </li>
-        </ul>
-     
-              </section>
-                <!-- /widget -->
-               {% if user.is_medical %} 
-               <section>
-             
-                <div class="widget widget-nopad">
-                    <div class="widget-header">
-                        <i class="icon-list-alt"></i>
-                        <h3 style="display: inline"> Agenda </h3>
-                    </div>
-                    <!-- /widget-header -->
-                    <div class="widget-content">
-                        <div id='calendar'>
-                        </div>
-                    </div>
-                    <!-- /widget-content -->
-                </div>
-                
-                  </section>
-                  {% endif %}
-    <section>
+    <ul id="info" class="collection">
+        <li class="collection-item">Dirección: {{user.address}} </li>
+        <li class="collection-item">Teléfono: {{user.phone}} </li>
+        <li class="collection-item">Fecha de nacimiento: {{user.birthdate}} </li>
+    </ul>
+    </section>
+
+    <div class="header-table ">
+        <h2 class="center-align">Citas pendientes</h2>
+    </div>
+    <div id="tabla-ciru">
+
+        <table class="highlight responsive-table centered ">
+            <thead class="header grey">
+                <tr>
+                    <th>Paciente</th>
+                    <th>Descripción</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            {% for cita in citas %}
+
+            <thead>
+                <tr>
+                    <th>
+                        <a href="#">{{cita.paciente|capfirst}}</a>
+                    </th>
+                    <th>{{cita.descripcion}}</th>
+
+                    {% if not cita.confirmada %}
+                    <th>
+                        Pendiente
+                    </th>
+                    <th>
+                        <a href="">Confirmar</a>
+                    </th>
+                    {% endif %}
             
-                <div class="widget">
-                    <div class="widget-header">
-                        <i class="icon-signal"></i>
-                        <h3 style="display: inline">Estadistica del sitio </h3>
-                    </div>
-                    <!-- /widget-header -->
-                    <div class="widget-content">
-                        <canvas id="area-chart" class="chart-holder" height="250" width="538"> </canvas>
-                        <!-- /area-chart -->
-                    </div>
-                    <!-- /widget-content -->
-                </div>
-                <div class="widget">
-                        <div class="widget-header">
-                            <i class="icon-signal"></i>
-                            <h3 style="display: inline">Estadistica del Pacientes </h3>
-                        </div>
-                        <!-- /widget-header -->
-                        <div class="widget-content">
-                            <canvas id="area-chart" class="chart-holder" height="250" width="538"> </canvas>
-                            <!-- /area-chart -->
-                        </div>
-                        <!-- /widget-content -->
-                    </div>
-                    <div class="widget">
-                            <div class="widget-header">
-                                <i class="icon-signal"></i>
-                                <h3 style="display: inline">Estadistica del Cirugias </h3>
-                            </div>
-                            <!-- /widget-header -->
-                            <div class="widget-content">
-                                <canvas id="area-chart" class="chart-holder" height="250" width="538"> </canvas>
-                                <!-- /area-chart -->
-                            </div>
-                            <!-- /widget-content -->
-                        </div>
-              
-              </section>
-{% endblock centro %}
+                    {% if cita.confirmada %}
+                    <th>
+                       Confirmada
+                    </th>
+                    <th>
+                        <a href="">Cancelar</a>
+                    </th>
+                    {% endif %}
+            
+                </tr>
+            </thead>
+
+            {% endfor %}
+
+    </div>
+
+    </table>
+    {% endblock centro %}

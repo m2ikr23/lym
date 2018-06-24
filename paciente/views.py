@@ -12,6 +12,7 @@ from django.views.generic import View, DetailView,ListView
 from .forms import CreateForm,CreatePaqueteForm,UpdatePaqueteForm
 from .forms import SolicitarCitaForm
 from .models import Paciente,Paquete
+from cirujano.models import Cita
 from users.models import Country
 # Create your views here.
 
@@ -55,6 +56,29 @@ class PaqueteView(ListView):
     context_object_name = "paquetes"
 
 
-def solicitarCitaView(request):
-    form = SolicitarCitaForm
-    return render(request,'paciente/solicitar_cita.html',{'form':form})
+
+class CitaView(CreateView):
+    success_url = reverse_lazy('users:notificacion')
+    template_name = 'paciente/solicitar_cita.html'
+    model = Cita
+    form_class = SolicitarCitaForm
+
+    def form_valid(self,form):
+        self.object = form.save(commit=False)
+        self.object.paciente = Paciente.objects.get(pk=self.request.user.pk)
+        self.object.save()
+        return HttpResponseRedirect(self.get_success_url())
+    
+     
+class CitaDetailView(DetailView):
+    model = Cita
+    template_name = "paciente/consultar_cita.html"
+    
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['citas'] = Cita.objects.get(paciente=self.request.user)
+        return context
+     
+    
+

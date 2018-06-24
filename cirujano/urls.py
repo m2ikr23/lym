@@ -3,7 +3,6 @@ from . import views
 app_name = 'cirujano'
 urlpatterns = [
     path('registro',views.CrearView.as_view(),name='registro'),
-    path('dashboard',views.DashboardView.as_view(),name="dashboard"),
     path('planificar',views.planificarCirugiaView.as_view(),name="planificar"),
     path('updateCirugia/<str:pk>/',views.UpdateCirugiaView.as_view(),name='updateCirugia'),
     path('incluirCirugia',views.CrearCirugiaView.as_view(),name='incluirCirugia'),

@@ -1,0 +1,37 @@
+{% extends "admin/dashboard.html" %}
+{% block card-content %}
+   <div class="collection ">
+            <a href=" {% url 'users:update' %} " class="collection-item center-align">Actualizar datos</a>
+            <a href="#modal3" onclick="return abrir_modal('{% url 'paciente:consultar' user.pk %}')" class="collection-item center-align btn ">Consultar Cita</a>
+            <a href="#!" class="collection-item center-align">solicitar Paquetes </a>
+        </div>           
+{% endblock card-content %}
+
+{% block centro %}
+<section>
+        <ul id="info" class="collection">
+         <li class="collection-item">Dirección: {{user.address}} </li>
+         <li class="collection-item">Teléfono: {{user.phone}} </li>
+         <li class="collection-item">Fecha de nacimiento: {{user.birthdate}} </li>
+        </ul>
+     
+              </section>
+
+<div id="popup"></div>
+
+{% endblock centro %}
+
+
+{% block scripts %}
+<script type="text/javascript" >
+
+        function abrir_modal(url){
+        $('#popup').load(url, function()
+        {
+               
+        });
+        return false;
+        }
+    
+      </script>
+{% endblock %}    
