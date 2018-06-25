@@ -1,0 +1,82 @@
+select {
+    display: none !important;
+}
+.card-user.col.s3 {
+    background-color: black;
+    min-height: 800px;
+}
+
+div#tabla-ciru {
+    max-height: 500px;
+    overflow: auto;
+}
+
+ul.errorlist {
+    color: red;
+}
+#dropdown1 {
+    color: aliceblue;
+    background-color: #574141bb;
+    margin: 50px;
+  }
+
+  #dropdown1 a {
+    color: aliceblue;
+  }
+
+  .card .card-content {
+    padding: 0px;
+
+}
+
+.btn-floating.halfway-fab {
+    position: absolute;
+    top: 20px;
+    right: 5px;
+    bottom: -20px;
+    background-color:rgba(14, 8, 8, 0.623);
+}
+
+
+.widget-header [class^="icon-"], .widget-header [class*=" icon-"] {
+	
+	display: inline;
+
+}
+.widget-header h3 {
+   
+    display: inline;
+    
+}
+
+.card {
+    background-color: #1f1f1ffa;
+}
+.card.cita{
+        background-color: #fefefffa;
+}
+.card-image {
+    color: white;
+    background-color: #000000e0;
+    background-image: url(../../home/img/Lighthouse.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.card .card-image img {
+    border-radius: 70px 70px;
+    max-width: 150px;
+    max-height: 150px;
+}
+
+.collection{
+
+    border: none
+}
+
+a.collection-item.center-align {
+    background-color: transparent;
+    color: white;
+
+    border: none
+}

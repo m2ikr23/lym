@@ -1,0 +1,82 @@
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>MV World</title>
+{% load admin_static %}
+{% load static %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="{% static "users/admin/css/formulario.css"  %} " rel="stylesheet">
+<link href="{% static "users/admin/css/materialize.min.css"  %} " rel="stylesheet">
+<link href="{% static "users/admin/font/iconfont/material-icons.css"  %} " rel="stylesheet">
+</head>
+<body>
+
+    <nav>
+                    <div class="nav-wrapper blue">
+                               
+                        <a href="{% url 'users:home' %}" class="brand-logo"> <i class="material-icons">format_list_bulleted</i> MV World</a>
+                            <ul class="right hide-on-med-and-down">
+                                  <li><a href="#"></a></li>
+                                  <li><a href="#"></a></li>
+                                  <li><a href="#"></a></li>
+                                  <li><a href="#"></a></li>
+                                  <!-- Dropdown Trigger -->
+
+                                </ul>
+                              </div>
+                            </nav>
+<div class="row">
+    <div class="col s2">
+
+    </div>
+    <div class="col s8">
+        
+    <div class=" content z-depth-4" >
+        <div class="header"> <h3>{% block titulo %}{% endblock %}</h3></div>
+          
+    {% block content %}<div class="img-content">
+  <img class="img-user" src=" {% static "users\admin\img\user_giKLtxw.png " %} " alt="Registro">
+    </div>
+  
+    {% endblock %} 
+     
+    </div>
+    </div>
+    <div class="col s2">
+
+    </div>
+</div>
+<script src="{% static "users/admin/js/jquery-1.7.2.min.js"  %}"></script>
+<script type="text/javascript" >
+
+    $(document).ready(function(){
+        var hoy = new Date();
+        var dd = hoy.getDate();
+        $('.datepicker').datepicker({'yearRange':100, 'maxDate': hoy,'format':'yyyy-mm-dd'});
+        });
+
+        $(document).ready(function(){
+        var hoy = new Date();
+        var dd = hoy.getDate();
+        var min = 
+        $('.datepicker1').datepicker({'yearRange':100, 'minDate': min,'format':'yyyy-mm-dd'});
+        });
+       
+    $(document).ready(function(){
+    $('select').formSelect();
+    $('#select_pais').on('change', Ver);
+      function Ver(){
+        var values = $('option:selected').val()
+        console.log(values);
+        $('#prefix').val(values)
+      }
+ 
+  });  
+</script>
+<script src="{% static "users/admin/js/materialize.js" %}"></script>
+<script src="{% static "users/admin/js/base.js" %}"></script> 
+{% block scripts %}
+  
+{% endblock scripts %}
+</body>
+</html>

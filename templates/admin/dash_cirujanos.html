@@ -1,0 +1,56 @@
+{% extends "admin/dashboard.html" %} 
+
+{% block card-content %}
+<div class="collection ">
+  <a href="{% url 'cirujano:registro' %}" class="collection-item center-align">Registrar cirujanos</a>
+
+</div>
+{% endblock card-content %} 
+
+{% block centro %}
+<div class="header-table ">
+  <h2 class="center-align">Lista de cirujanos</h2>
+</div>
+<div id="tabla-ciru">
+
+  <table class="highlight responsive-table centered ">
+    <thead class="header grey">
+      <tr>
+        <th>Nombre</th>
+        <th>Especialidades</th>
+        <th>Correo</th>
+        <th>Telefono</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    {% for cirujano in cirujanos %}
+
+    <thead>
+      <tr>
+        <th>
+          <a href="#">{{cirujano|capfirst}}</a>
+        </th>
+        <th>{% for especial in cirujano.especialidad.all %} {{especial.nombre|capfirst}}, {% endfor %}</th>
+        <th>{{cirujano.email}}</th>
+        <th>{{cirujano.phone}}</th>
+        {% if cirujano.is_active %}
+        <th>Activo</th>
+        <th>
+          <a href="{% url 'users:desactivate' cirujano.id  %}">Desactivar</a>
+        </th>
+        {% endif %} {% if not cirujano.is_active %}
+        <th>Inactivo</th>
+        <th>
+          <a href="{% url 'users:activate' cirujano.id  %}">Activar</a>
+        </th>
+        {% endif %}
+      </tr>
+    </thead>
+
+    {% endfor %}
+
+</div>
+
+</table>
+{% endblock centro %}

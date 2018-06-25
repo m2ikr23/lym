@@ -1,0 +1,42 @@
+{% extends "admin/dashboard.html" %}
+
+{% block card-content %}
+<div class="collection ">
+    <a href="{% url 'paciente:incluirPaquete' %}"class="collection-item center-align">Agregar Paquete</a>
+    <a href="{% url 'paciente:paquetes' %}" class="collection-item center-align">Consultar Paquetes</a>
+    </div>    
+{% endblock card-content %}
+
+{% block centro  %}
+<div class="header-table "><h2 class="center-align">Consultar Paquetes</h2></div>
+<div id="tabla-clinica" >
+ 
+<table  class="highlight responsive-table centered " >
+  <thead class="header grey">
+    <tr>
+      <th>Nombre</th>
+      <th>Servicios</th>
+      <th>Precio</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  {% for paquete in paquetes %}
+  <thead>
+    <tr>
+      <th><a href="#">{{paquete.nombre|capfirst}}</a></th>
+      <th> 
+      {% for serv in paquete.servicios.all  %}
+      {{serv.nombre}},
+      {% endfor %}
+          </th>
+      <th>{{paquete.precio}}</th>
+      <th><a href="{% url 'paciente:updatePaquete' paquete.id  %}"> Actualizar Paquete</a></th>
+    </tr>
+  </thead>
+  {% endfor %}
+
+</div>
+
+</table>
+
+{% endblock centro %}

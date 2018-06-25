@@ -1,0 +1,13 @@
+{% extends "admin/formularios.html" %}
+{% block titulo %}
+
+{% endblock %}
+{% block content %}
+<form method="POST">
+	{% csrf_token %}
+	<h3>¿Quieres cancelar esta cita?</h3>	
+	<button class=" btn waves-effect waves-light red" type="submit">Sí</button>
+	<a class= "btn waves-effect waves-light" href="{% url 'users:dashboard' %}">Regresar</a>
+</form>
+
+{% endblock %}

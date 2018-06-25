@@ -1,0 +1,47 @@
+
+<div class="card cita">
+    <div class="card-image">
+      
+      <img class="circle responsive-img" src= '{{MEDIA_URL}}{{object.medico.avatar}}' >
+      <h5 class="center-align">{{object.medico|capfirst}}</h5>
+    </div>
+    <div class="card-content">
+        <div class="collection ">
+            <div  class=" collection-item">
+
+            <h6 class="collection-header">
+                            Descripción: 
+            </h6>
+                <p class="collection-item center-align">{{object.descripcion}}</p>
+            </div>
+
+           
+        
+                    <div class="collection ">
+                        <div  class=" collection-item">
+            
+                        <h6 class="collection-header">
+                                Solicitada: 
+                        </h6>
+                        <p class="collection-item center-align">{{object.fecha_solicitud}}</p>
+                        </div>
+            
+                        <div class="collection ">
+                                <div  class=" collection-item">
+                    
+                                <h6 class="collection-header">
+                                        Estado: 
+                                </h6>
+                                <p class="collection-item center-align">
+                                    {% if object.confirmada %}
+                                   <span  class="green-text text-darken-2"> Confirmada, en poco tiempo se comunicará contigo.</span>
+                                    {% endif %}
+                                    {% if not object.confirmada %}
+                                    Por confirmar
+                                    {% endif %}
+                                   </p>
+                                </div>
+                
+    </div>
+  </div>
+            

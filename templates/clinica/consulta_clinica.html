@@ -1,0 +1,40 @@
+{% extends "admin/dashboard.html" %}
+
+{% block card-content %}
+<div class="collection ">
+        <a href="{% url 'clinica:registro' %}"class="collection-item center-align">Registrar Clínica</a>
+        <a href="#" class="collection-item center-align">Consultar Clínica</a>
+    </div>    
+{% endblock card-content %}
+
+{% block centro  %}
+<div class="header-table "><h2 class="center-align">Consultar Clínica</h2></div>
+<div id="tabla-clinica" >
+ 
+<table  class="highlight responsive-table centered " >
+  <thead class="header grey">
+    <tr>
+      <th>Nombre</th>
+      <th>Dirección</th>
+      <th>Email</th>
+      <th>Telefono</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  {% for clinica in clinicas %}
+  <thead>
+    <tr>
+      <th><a href="#">{{clinica.idNombre|capfirst}}</a></th>
+      <th>{{clinica.direccion}}</th>
+      <th>{{clinica.email}}</th>
+      <th>{{clinica.telefono}}</th>
+      <th><a href="{% url 'clinica:update' clinica.id  %}"> Actualizar Clínica </a></th>
+    </tr>
+  </thead>
+  {% endfor %}
+
+</div>
+
+</table>
+
+{% endblock centro %}

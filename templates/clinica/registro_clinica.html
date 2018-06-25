@@ -1,0 +1,33 @@
+{% extends "admin/formularios.html" %}
+{% block titulo %}
+Registro de Clinica
+{% endblock %}
+{% block content %}
+<form class="form" action="" method="post">
+    {% csrf_token %}
+    {% for field in form %}
+
+    <div class="row">
+      <div class="input-field ">
+        {% if field.errors %}
+           {{field.errors}}
+        {% endif %}
+       
+        {{field}}
+        
+        
+      <label "{% for class in field.label_clasess %} {{class}} {% endfor %}"  for="{{ field.name }}">{{ field.label }}</label>
+      </div>
+    </div>
+
+    {% endfor %}
+    <div class="form-item   right-align col s6">
+            <a class = "btn btn-small red " href="{% url 'users:clinicas' %}">Cancelar</a>
+      </div>
+   
+     <div class="form-item rigth-align col s4">
+            <button class = "btn btn-small blue right-align"  type="submit" >Guardar</a>
+        </div>
+</form>
+
+{% endblock %}

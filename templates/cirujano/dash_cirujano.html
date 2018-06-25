@@ -1,0 +1,77 @@
+{% extends "admin/dashboard.html" %}
+
+{% block card-content %}
+<div class="collection ">
+    <a href=" {% url 'users:update' %} " class="collection-item center-align">Actualizar datos</a>
+    <a href="{% url 'cirujano:historias' %}" class="collection-item center-align">Consultar historia</a>
+    <a href="{% url 'cirujano:planificar' %}" class="collection-item center-align">Planificar cirugia</a>
+    <a href="#!" class="collection-item center-align">Consultar planificación</a>
+</div>
+{% endblock card-content %} 
+
+{% block centro %}
+<section>
+    <ul id="info" class="collection">
+        <li class="collection-item">Dirección: {{user.address}} </li>
+        <li class="collection-item">Teléfono: {{user.phone}} </li>
+        <li class="collection-item">Fecha de nacimiento: {{user.birthdate}} </li>
+    </ul>
+    </section>
+
+    <div class="header-table ">
+        <h2 class="center-align">Citas pendientes</h2>
+    </div>
+    <div id="tabla-ciru">
+
+        <table class="highlight responsive-table centered ">
+            <thead class="header grey">
+                <tr>
+                    <th>Paciente</th>
+                    <th>Descripción</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            {% for cita in citas %}
+
+            <thead>
+                <tr>
+                    <th>
+                        <a href="#">{{cita.paciente|capfirst}}</a>
+                    </th>
+                    <th>{{cita.descripcion}}</th>
+
+                    {% if not cita.confirmada %}
+                    <th>
+                        Pendiente
+                    </th>
+                    <th>
+                        <a href="">Confirmar</a>
+                    </th>
+                    {% endif %}
+            
+                    {% if cita.confirmada %}
+                    <th>
+                       Confirmada
+                    </th>
+                    <th>
+                        <a href="">Cancelar</a>
+                    </th>
+                    {% endif %}
+                    
+                    {% if cita %}
+                      <th>
+                        <a href="{% url 'cirujano:registrarHistoria' cita.pk %}">Crear historia</a>
+                    </th>  
+                    {% endif %}
+                        
+                    
+                </tr>
+            </thead>
+
+            {% endfor %}
+
+    </div>
+
+    </table>
+    {% endblock centro %}

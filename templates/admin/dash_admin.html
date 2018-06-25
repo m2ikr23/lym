@@ -1,0 +1,79 @@
+{% extends "admin/dashboard.html" %}
+{% block card-content %}
+   <div class="collection ">
+            <a href=" {% url 'users:update' %} " class="collection-item center-align">Actualizar datos</a>
+            <a href=" {% url 'users:create' %}" class="collection-item center-align">Agregar administrador</a>
+            <a href=" {% url 'users:especialidades' %}" class="collection-item center-align">especialidades</a>
+            <a href=" {% url 'users:paquetes' %}" class="collection-item center-align">paquetes</a> 
+        </div>           
+{% endblock card-content %}
+
+{% block centro %}
+<section>
+        <ul id="info" class="collection">
+         <li class="collection-item">Dirección: {{user.address}} </li>
+         <li class="collection-item">Teléfono: {{user.phone}} </li>
+         <li class="collection-item">Fecha de nacimiento: {{user.birthdate}} </li>
+        </ul>
+     
+              </section>
+                <!-- /widget -->
+               {% if user.is_medical %} 
+               <section>
+             
+                <div class="widget widget-nopad">
+                    <div class="widget-header">
+                        <i class="icon-list-alt"></i>
+                        <h3 style="display: inline"> Agenda </h3>
+                    </div>
+                    <!-- /widget-header -->
+                    <div class="widget-content">
+                        <div id='calendar'>
+                        </div>
+                    </div>
+                    <!-- /widget-content -->
+                </div>
+                
+                  </section>
+                  {% endif %}
+    <section>
+            
+                <div class="widget">
+                    <div class="widget-header">
+                        <i class="icon-signal"></i>
+                        <h3 style="display: inline">Estadistica del sitio </h3>
+                    </div>
+                    <!-- /widget-header -->
+                    <div class="widget-content">
+                        <canvas id="area-chart" class="chart-holder" height="250" width="538"> </canvas>
+                        <!-- /area-chart -->
+                    </div>
+                    <!-- /widget-content -->
+                </div>
+                <div class="widget">
+                        <div class="widget-header">
+                            <i class="icon-signal"></i>
+                            <h3 style="display: inline">Estadistica del Pacientes </h3>
+                        </div>
+                        <!-- /widget-header -->
+                        <div class="widget-content">
+                            <canvas id="area-chart" class="chart-holder" height="250" width="538"> </canvas>
+                            <!-- /area-chart -->
+                        </div>
+                        <!-- /widget-content -->
+                    </div>
+                    <div class="widget">
+                            <div class="widget-header">
+                                <i class="icon-signal"></i>
+                                <h3 style="display: inline">Estadistica del Cirugias </h3>
+                            </div>
+                            <!-- /widget-header -->
+                            <div class="widget-content">
+                                <canvas id="area-chart" class="chart-holder" height="250" width="538"> </canvas>
+                                <!-- /area-chart -->
+                            </div>
+                            <!-- /widget-content -->
+                        </div>
+              
+              </section>
+{% endblock centro %}

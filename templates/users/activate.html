@@ -1,0 +1,13 @@
+{% extends "admin/formularios.html" %}
+{% block titulo %}
+{% endblock %}
+{% block content %}
+
+<form method="POST">
+	{% csrf_token %}
+	<h3>¿Desea activar a {{user}} ?</h3>	
+	<button class="btn btn-danger" type="submit">Sí, activar</button>
+	<a class= "btn btn-default" href="{% url 'users:cirujanos' %}">Cancelar</a>
+</form>
+
+{% endblock %}

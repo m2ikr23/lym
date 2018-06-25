@@ -1,0 +1,13 @@
+{% extends "admin/dashboard.html" %}
+
+{% block card-content %}
+<div class="collection ">
+        <a href="{% url 'cirujano:incluirCirugia' %}" class="collection-item center-align">Incluir Cirugía</a>
+        <a href="{% url 'cirujano:cirugias' %}" class="collection-item center-align">Consultar Cirugía</a>
+    </div>    
+{% endblock card-content %}
+
+{% block centro  %}
+
+
+{% endblock centro %}

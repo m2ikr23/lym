@@ -1,0 +1,81 @@
+{% extends "admin/dashboard.html" %}
+{% block card-content %}
+   <div class="collection ">
+            <a href=" {% url 'users:update' %} " class="collection-item center-align">Actualizar datos</a>
+            {% if cita %}
+          
+            <a class="collection-item center-align waves-effect waves-light modal-trigger" href="#modal3">Consultar Cita</a>
+            <a href="{% url 'paciente:solicitarPaquete' %}" class="collection-item center-align">Solicitar Paquetes </a>
+            {% endif %}
+        </div>           
+{% endblock card-content %}
+
+{% block centro %}
+<section>
+        <ul id="info" class="collection">
+                <li class="collection-item">Dirección: {{user.address}} </li>
+                <li class="collection-item">Teléfono: {{user.phone}} </li>
+                <li class="collection-item">Fecha de nacimiento: {{user.birthdate}} </li>
+        </ul>
+
+</section>
+
+
+<!-- Modal activar -->
+
+{% if cita %}
+     <div id="modal3" class="modal">
+        <div class="modal-content">
+                <div class="card cita">
+                        <div class="card-image">
+
+                                <img class="circle responsive-img" src='{{MEDIA_URL}}{{cita.medico.avatar}}'>
+                                <h5 class="center-align">{{cita.medico|capfirst}}</h5>
+                        </div>
+                        <div class="card-content">
+                                <div class="collection ">
+                                        <div class=" collection-item">
+
+                                                <h6 class="collection-header">
+                                                        Descripción:
+                                                </h6>
+                                                <p class="collection-item center-align">{{cita.descripcion}}</p>
+                                        </div>
+
+
+
+                                        <div class="collection ">
+                                                <div class=" collection-item">
+
+                                                        <h6 class="collection-header">
+                                                                Solicitada:
+                                                        </h6>
+                                                        <p class="collection-item center-align">{{cita.fecha_solicitud}}</p>
+                                                </div>
+
+                                                <div class="collection ">
+                                                        <div class=" collection-item">
+
+                                                                <h6 class="collection-header">
+                                                                        Estado:
+                                                                </h6>
+                                                                <p class="collection-item center-align">
+                                                                        {% if cita.confirmada %}
+                                                                        <span class="green-text text-darken-2"> Confirmada, en poco tiempo se comunicará contigo.</span>
+                                                                        {% endif %} {% if not cita.confirmada %} Por confirmar {% endif %}
+                                                                </p>
+                                                        </div>
+
+                                                </div>
+                                        </div>
+                                </div>
+                                <div class="modal-footer">
+                                        <a href="{% url 'paciente:cancelar' cita.id %}" class="modal-close waves-effect waves-green btn-flat">Cancelar Cita</a>
+                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Regresar</a>
+                                </div>
+                        </div>   
+{% endif %}
+        
+
+
+{% endblock centro %}
