@@ -20,5 +20,13 @@ urlpatterns = [
     path('dashboard/cirugias',views.cirugiaDashView, name='cirugias'),
     path('dashboard/especialidad',views.especialidadDashView, name='especialidades'),
     path('dashboard/paquetes',views.paqueteDashView, name='paquetes'),
-    path('exito',views.notificacionView, name='notificacion')
+    path('exito',views.notificacionView, name='notificacion'),
+    path('info/',views.maxiView, name='Infomaxi'),
+    path('infoplas/',views.plastiView, name='infoplasti'),
+    path('infotraum/',views.traumaView, name='infotrauma'),
+    path('infofta/',views.oftamoView, name='infoftamo'),
+    path('infogene/',views.generalView, name='infogeneral'),
+    path('infogineco/',views.gineView, name='infogine'),
+    path('infootorri/',views.otorrinoView, name='infotorrino'),
+    path('infouro/',views.uroloView, name='infourolo')
 ]

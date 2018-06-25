@@ -8,30 +8,35 @@
 <link href="{% static "users/admin/css/formulario.css"  %} " rel="stylesheet">
 <link href="{% static "users/admin/css/materialize.min.css"  %} " rel="stylesheet">
 <link href="{% static "users/admin/font/iconfont/material-icons.css"  %} " rel="stylesheet">
+<link rel="shartcut icon" type="image/x-icon" href="{% static "users/home/img/favicon2.png" %}">
 </head>
 <body>
 
-    <nav>
-                    <div class="nav-wrapper blue">
+
+<a  class="logo-index" style="z-index: 0; position: absolute; left: -2%;" href="{% url 'users:home' %}"><img src="{% static "users/home/img/logomv.png" %}" alt="" class="img-responsive logo"></a>
+ 
+
+<!--  <nav>
+                  <div class="nav-wrapper blue">
                                
-                        <a href="{% url 'users:home' %}" class="brand-logo"> <i class="material-icons">format_list_bulleted</i> MV World</a>
+                        <a href="index.html"><img src="{% static "users/home/img/logomv.png" %}" alt="" class="img-responsive logo"></a>
                             <ul class="right hide-on-med-and-down">
                                   <li><a href="#"></a></li>
                                   <li><a href="#"></a></li>
                                   <li><a href="#"></a></li>
                                   <li><a href="#"></a></li>
-                                  <!-- Dropdown Trigger -->
+                                  
 
-                                </ul>
-                              </div>
-                            </nav>
+                            </ul>
+                        </div> 
+                            </nav>-->
 <div class="row">
     <div class="col s2">
 
     </div>
     <div class="col s8">
         
-    <div class=" content z-depth-4" >
+    <div class=" content z-depth-4" style="width: 80%; margin-left: 10%;">
         <div class="header"> <h3>{% block titulo %}{% endblock %}</h3></div>
           
     {% block content %}<div class="img-content">

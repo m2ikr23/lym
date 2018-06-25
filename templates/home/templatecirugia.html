@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cirugía</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static "users/home/css/font-awesome.min.css"%}">
+   <link rel="stylesheet" href="{% static "users/home/css/bootstrap.min.css" %}">
+   <link rel="stylesheet" href="{% static "users/home/css/style.css" %}">
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet' type='text/css'>
+   <link href='http://fonts.googleapis.com/css?family=BenchNine:300,400,700' rel='stylesheet' type='text/css'>
+   <script src="{% static "users/home/js/modernizr.js" %}"></script>
+   <link rel="shartcut icon" type="image/x-icon" href="{% static "users/home/img/favicon2.png" %}">
+</head>
+<body>
+
+<!-- ==================================================== header section -->
+<header class="top-header">
+        <div class="container">
+ 
+            <div class="row">
+                <div class="col-xs-3 header-logo">
+                    <br>
+                    <a href="{% url 'users:home' %}"><img src="{% static "users/home/img/logomv.png" %}" alt="" class="img-responsive logo"></a>
+                </div>
+ 
+ 
+                <div class="col-md-9">
+                    <nav class="navbar navbar-default">
+                      <div class="container-fluid nav-bar">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                          </button>
+                        </div>
+ 
+ <!--#######################################BARRA DE NAVEGACION##############################################-->
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse">
+                          
+                          <ul class="nav navbar-nav navbar-right">
+                              <li class="active"><a href="{% url 'users:home' %}"><i class="fa fa-lg fa-home"></i></a></li>
+                            <li><a class="menu" href="{% url 'users:home' %}#nosotros">Nosotros</a></li>
+                            <li><a class="menu" href="{% url 'users:home' %}#servicios">Servicios</a></li>
+                            <li><a class="menu" href="{% url 'users:home' %}#medicos">Médicos</a></li>
+                            <li><a class="menu" href="{% url 'users:home' %}#cirugias">Cirugías</a></li>
+                            <li><a class="menu" href="{% url 'users:home' %}#contact">Contáctenos</a></li>
+                            <li><a href=" {% url 'users:login' %} " data-toggle="modal">Acceso</a></li>
+                            <li><a href="{% url 'paciente:registro' %} " data-toggle="modal">Registrarse</a></li>
+ 
+ 
+                          </ul>
+                        </div><!-- /navbar-collapse -->
+                      </div><!-- / .container-fluid -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header> <!-- end of header area -->
+ 
+ </head>
+ <body>
+  <!--############ MENU DE CIRUGIAS ###########-->
+ <!-- Protesis total de cadera-->
+ <div style="
+    position: absolute;
+    left: 15%;
+    top: 30%;
+    right: 10%;
+    font-size: 1.5em;">
+    
+{% block cirugias %}
+
+{% endblock %}
+
+
+</div>
+</body>
+</html>

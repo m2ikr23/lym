@@ -9,6 +9,7 @@
 <link href="{% static "users/admin/css/materialize.min.css"  %} " rel="stylesheet">
 <link href="{% static "users/admin/font/iconfont/material-icons.css"  %} " rel="stylesheet">
 <link href="{% static "users/admin/css/dash.css"  %} "  rel="stylesheet">
+<link rel="shartcut icon" type="image/x-icon" href="{% static "users/home/img/favicon2.png" %}">
 </head>
 <body>
         <ul id="dropdown1" class="dropdown-content">
@@ -49,8 +50,8 @@
     <nav>
       <div class="nav-wrapper {% if user.is_staff %}black {% endif %} {% if user.is_medical %} blue {% endif %} {% if user.is_pacient %} blue {% endif %}">
                  
-          <a href="{% url 'users:home' %}" class="brand-logo">MV World</a>
-            <span class="left-align" style=" margin-left: 150px;"><a class="waves-effect waves-light" href="{% url 'users:dashboard' %}">Hola {{user.get_short_name }} </a></span>
+        <a href="{% url 'users:home' %}"><img src="{% static "users/home/img/logomvw.png" %}"  class="img-responsive logo" style="position: absolute; height: 50px; margin: 9px;"></a>
+            <span class="left-align" style=" margin-left: 80px;"><a class="waves-effect waves-light" href="{% url 'users:dashboard' %}">Hola {{user.get_short_name }} </a></span>
             
             <ul class="right hide-on-med-and-down">
                 {% if user.is_staff %}
@@ -67,7 +68,7 @@
                     {% if user.is_pacient %}
                     <li><a class="waves-effect waves-light" href="{% url 'paciente:solicitar' %}">Solicitar cita</a></li>
                     <li><a class="waves-effect waves-light" href="#">Cirujanos</a></li>
-                    <li><a class="waves-effect waves-light" href="#">Cirugias</a></li>
+                    <li><a class="waves-effect waves-light" href="#">Cirugías</a></li>
                     {% endif %}
                     <!-- Dropdown Trigger -->
                     <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><i class="material-icons right">format_list_bulleted</i></a></li>

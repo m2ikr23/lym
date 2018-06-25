@@ -14,7 +14,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=BenchNine:300,400,700' rel='stylesheet' type='text/css'>
 	<script src="{% static "users/home/js/modernizr.js" %}"></script>
-	<link rel="shartcut icon" type="image/x-icon" href="{% static "users/home/img/favicon1.jpg" %}">
+	<link rel="shartcut icon" type="image/x-icon" href="{% static "users/home/img/favicon2.png" %}">
 	<!--[if lt IE 9]>
       <script src="{% static "users/home/js/html5shiv.js" %}></script>
       <script src="js/respond.min.js"></script>
@@ -31,7 +31,7 @@
 			<div class="row">
 				<div class="col-xs-3 header-logo">
 					<br>
-					<a href="index.html"><img src="{% static "users/home/img/logo.png" %}" alt="" class="img-responsive logo"></a>
+					<a href="{% url 'users:home' %}"><img src="{% static "users/home/img/logomv.png" %}" alt="" class="img-responsive logo"></a>
 				</div>
 
 
@@ -56,7 +56,8 @@
 					      	<li class="active"><a href="{% url 'users:home' %}"><i class="fa fa-lg fa-home"></i></a></li>
 					        <li><a class="menu" href="#nosotros">Nosotros</a></li>
 					        <li><a class="menu" href="#servicios">Servicios</a></li>
-					        <li><a class="menu" href="#medicos">Medicos</a></li>
+							<li><a class="menu" href="#medicos">Médicos</a></li>
+							<li><a class="menu" href="#cirugias">Cirugías</a></li>
 					        <li><a class="menu" href="#contact">Contáctenos</a></li>
 					        <li><a href=" {% url 'users:login' %} " data-toggle="modal">Acceso</a></li>
 					        <li><a href="{% url 'paciente:registro' %} " data-toggle="modal">Registrarse</a></li>
@@ -133,46 +134,46 @@
 		<div class="container">
 			<div class="row">
 				<h2>Nosotros</h2>
-				<h4>Estos especialistas están calificados para diagnosticar y/o tratar trastornos que afectan el aprendizaje y la atención, incluyendo el trastorno por déficit de atención con hiperactividad (TDAH).</h4>
+				
 				<div class="col-md-4 col-sm-6">
 					<div class="single-about-detail clearfix">
 						<div class="about-img">
-							<img class="img-responsive" src="{% static "users/home/img/item1.jpg" %}" alt="">
+							<img class="img-responsive" src="{% static "users/home/img/cirujanos.jpg" %}" alt="">
 						</div>
 						<div class="about-details">
 							<div class="pentagon-text">
-								<h1>C</h1>
+								<h1>Q</h1>
 							</div>
-							<h3>Especialistas en ninos</h3>
-							<p>Los pediatras son médicos que tratan a los niños desde la infancia hasta la adolescencia. Usted está probablemente acostumbrado a llevar a su hija al pediatra para chequeos regulares o cuando está enferma. Los pediatras están especialmente capacitados para ofrecer información acerca del desarrollo “normal” de su hija</p>
+							<h3>¿Quiénes somos?</h3>
+							<p>Grupo de médicos cirujanos venezolanos, especialistas en nuestras áreas que ofrecemos nuestros servicios a pacientes tanto dentro del país como los que se encuentran en el extranjero.</p>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-4 col-sm-6">
 					<div class="single-about-detail">
 						<div class="about-img">
-							<img class="img-responsive" src="{% static "users/home/img/item2.jpg" %}" alt="">
+							<img class="img-responsive" src="{% static "users/home/img/operacion.jpg" %}" alt="">
 						</div>
 						<div class="about-details">
 							<div class="pentagon-text">
-								<h1>W</h1>
+								<h1>O</h1>
 							</div>
-							<h3>Especialistas en ninos</h3>
-							<p>Los pediatras son médicos que tratan a los niños desde la infancia hasta la adolescencia. Usted está probablemente acostumbrado a llevar a su hija al pediatra para chequeos regulares o cuando está enferma. Los pediatras están especialmente capacitados para ofrecer información acerca del desarrollo “normal” de su hija</p>
+							<h3>Objetivos</h3>
+							<p>Ofrecer servicios de salud de óptima calidad, confiables y oportunos a problemas médicos incluyendo aquellos de alta complejidad, que garantice una adecuada atención humana.</p>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-4 col-sm-6">
 					<div class="single-about-detail">
 						<div class="about-img">
-							<img class="img-responsive" src="{% static "users/home/img/item3.jpg" %}" alt="">
+							<img class="img-responsive" src="{% static "users/home/img/cirujanos-plasticos.jpg" %}" alt="">
 						</div>
 						<div class="about-details">
 							<div class="pentagon-text">
-								<h1>M</h1>
+								<h1>A</h1>
 							</div>
-							<h3>Especialistas en ninos</h3>
-							<p>Los pediatras son médicos que tratan a los niños desde la infancia hasta la adolescencia. Usted está probablemente acostumbrado a llevar a su hija al pediatra para chequeos regulares o cuando está enferma. Los pediatras están especialmente capacitados para ofrecer información acerca del desarrollo “normal” de su hija.</p>
+							<h3>Actualmente</h3>
+							<p>Los médicos venezolanos siguen trabajando incansablemente para brindar bienestar a todos sus pacientes, incluyendo a los que se encuentran fuera del país.</p>
 						</div>
 					</div>
 				</div>
@@ -186,7 +187,7 @@
 		<div class="container">
 			<div class="row">
 				<h2>Servicios</h2>
-				<h4>Cuando aparecen problemas de aprendizaje y de atención, los pediatras pueden proporcionar información médica acerca de su hija.</h4>
+				<h4>Te ofrecemos la oportunidad de solicitar citas y cirugías con los mejores especialistas venezolanos, en áreas como:</h4>
 				<div class="col-md-3 col-sm-6">
 					<div class="single-service">
 						<div class="single-service-img">
@@ -194,7 +195,7 @@
 								<img class="heart img-responsive" src="{% static "users/home/img/service1.png" %}" alt="">
 							</div>
 						</div>
-						<h3>Problema cardíaco</h3>
+						<h3>CARDIOLOGÍA</h3>
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6">
@@ -204,7 +205,7 @@
 								<img class="brain img-responsive" src="{% static "users/home/img/service2.png" %}" alt="">
 							</div>
 						</div>
-						<h3>Problema cerebral</h3>
+						<h3>NEUROLOGÍA</h3>
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6">
@@ -214,7 +215,7 @@
 								<img class="knee img-responsive" src="{% static "users/home/img/service3.png" %}" alt="">
 							</div>
 						</div>
-						<h3>Problema de rodilla</h3>
+						<h3>TRAUMATOLOGÍA</h3>
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6">
@@ -224,12 +225,279 @@
 								<img class="bone img-responsive" src="{% static "users/home/img/service4.png" %}" alt="">
 							</div>
 						</div>
-						<h3>Problema de los huesos humanos</h3>
+						<h3>NEUMATOLOGÍA</h3>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section><!-- end of service section -->
+
+<!--#######################################COLUMNA CIRUGÍAS############################################## -->
+<section class="about text-center" id="cirugias">
+	<div class="container">
+		<div class="row">
+			<h2>Cirugías</h2>
+			<h4>Nuestros cirujanos venezolanos especialistas están calificados para realizar intenverciones quirúrgicas de alta calidad, brindando confianza y seguridad</h4>
+			<div class="col-md-4 col-sm-6">
+				<div class="single-about-detail clearfix">
+					<div class="about-details">
+						
+						<div class="panel-group" id="accordion">
+							<div class="panel-heading">
+								<h3 class="panel-title">
+									<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Oral y Maxilifacial </a>
+								</h3>
+							</div>
+							<div id="collapse1" class="panel-collapse collapse">
+								<div class="panel-body">
+									<li class="active">
+										<h3><a href="{%url 'users:Infomaxi' %}">Prognatismo o retrognatia</a></h3>
+									</li>
+									<li class="active">
+										<h3><a href="{%url 'users:Infomaxi' %}">Mandibular</a></h3>
+									</li>
+									<li class="active">
+										<h3><a href="{%url 'users:Infomaxi' %}">Monomaxilar</a></h3>
+									</li>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<div class="single-about-detail">
+					<div class="about-details">
+						
+						<div class="panel-group" id="accordion">
+							<div class="panel-heading">
+								<h3 class="panel-title">
+									<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+										Oftalmología y oculopatía
+									</a>
+								</h3>
+							</div>
+							<div id="collapse2" class="panel-collapse collapse">
+								<div class="panel-body">
+									<li class="active">
+										<h3><a href="{%url 'users:infoftamo' %}">Cataratas con lente trifocal</a></h3>
+									</li>
+									<li class="active">
+										<h3><a href="{%url 'users:infoftamo' %}">Cataratas con lente monofocal</a></h3>
+									</li>
+									<li class="active">
+										<h3><a href="{%url 'users:infoftamo' %}">Cataratas con lente multifocal</a></h3>
+									</li>
+									<li class="active">
+										<h3><a href="{%url 'users:infoftamo' %}">Miopía con láser</a></h3>
+									</li>
+									<li class="active">
+										<h3><a href="{%url 'users:infoftamo' %}">Hipermetropía con láser</a></h3>
+									</li>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4 col-sm-6">
+				<div class="single-about-detail">
+					<div class="about-details">
+						
+						<div class="panel-group" id="accordion">
+							<div class="panel-heading">
+								<h3 class="panel-title">
+									<a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+										Otorrinolaringología
+									</a>
+								</h3>
+							</div>
+							<div id="collapse3" class="panel-collapse collapse">
+								<div class="panel-body">
+									<li class="active">
+										<h3><a href="{%url 'users:infotorrino' %}">Timpanoplastia</a></h3>
+									</li>
+									<li class="active">
+										<h3><a href="{%url 'users:infotorrino' %}">Endoscopia nasosinusal unilateral</a></h3>
+									</li>
+									<li class="active">
+										<h3><a href="{%url 'users:infotorrino' %}">Adenoidectomía</a></h3>
+									</li>
+									<li class="active">
+										<h3><a href="{%url 'users:infotorrino' %}">Amigdaletomía</a></h3>
+									</li>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<div class="single-about-detail clearfix">
+					<div class="about-details">
+						
+						<div class="panel-group" id="accordion">
+							<div class="panel-heading">
+								<h3 class="panel-title">
+									<a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+										Traumatología
+									</a>
+								</h3>
+							</div>
+							<div id="collapse4" class="panel-collapse collapse">
+								<div class="panel-body">
+									<li class="active">
+										<h3><a href="{%url 'users:infotrauma' %}">Prótesis total de cadera</a></h3>
+									</li>
+									<li class="active">
+										<h3><a href="{%url 'users:infotrauma' %}">Prótesis total de rodilla</a></h3>
+									</li>
+									<li class="active">
+										<h3><a href="{%url 'users:infotrauma' %}">Atroscopia de rodilla</a></h3>
+									</li>
+									<li class="active">
+										<h3><a href="{%url 'users:infotrauma' %}">Atroscopia quirúrgica de menisco</a></h3>
+									</li>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<div class="single-about-detail">
+					<div class="about-details">
+						
+						<div class="panel-group" id="accordion">
+							<div class="panel-heading">
+								<h3 class="panel-title">
+									<a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
+										Plástica y estética
+									</a>
+								</h3>
+							</div>
+							<div id="collapse5" class="panel-collapse collapse">
+								<div class="panel-body">
+									<li class="active">
+										<h3><a href="{%url 'users:infoplasti' %}">Manoplastia de aumento con prótesis abatómicas</a></h3>
+									</li>
+									<li class="active">
+										<h3><a href="{%url 'users:infoplasti' %}">Aumneto de pechos con prótesis redondas</a></h3>
+									</li>
+									<li class="active">
+										<h3><a href="{%url 'users:infoplasti' %}">Blefaroplastia de párpados</a></h3>
+									</li>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<div class="single-about-detail">
+					<div class="about-details">
+						
+						<div class="panel-group" id="accordion">
+							<div class="panel-heading">
+								<h3 class="panel-title">
+									<a data-toggle="collapse" data-parent="#accordion" href="#collapse6">
+										Ginecología
+									</a>
+								</h3>
+							</div>
+							<div id="collapse6" class="panel-collapse collapse">
+								<div class="panel-body">
+									<li class="active">
+										<h3><a href="{%url 'users:infogine' %}">Histerectomía abdominal</a></h3>
+									</li>
+									<li class="active">
+										<h3><a href="{%url 'users:infogine' %}">histerectomía laparoscúpica</a></h3>
+									</li>
+									<li class="active">
+										<h3><a href="{%url 'users:infogine' %}">Miomectomía por laparoscopia</a></h3>
+									</li>
+									<li class="active">
+										<h3><a href="{%url 'users:infogine' %}">Miomectomía abdominal</a></h3>
+									</li>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<div class="single-about-detail clearfix">
+					<div class="about-details">
+						
+						<div class="panel-group" id="accordion">
+							<div class="panel-heading">
+								<h3 class="panel-title">
+									<a data-toggle="collapse" data-parent="#accordion" href="#collapse7">
+										Urología
+									</a>
+								</h3>
+							</div>
+							<div id="collapse7" class="panel-collapse collapse">
+								<div class="panel-body">
+									<li class="active">
+										<h3><a href="{%url 'users:infourolo' %}">Litotricia endoureteral con láser holmiun</a></h3>
+									</li>
+									<li class="active">
+										<h3><a href="{%url 'users:infourolo' %}">Próstata con láser de tulio</a></h3>
+									</li>
+									<li class="active">
+										<h3><a href="{%url 'users:infourolo' %}">Próstata con liberación uretral</a></h3>
+									</li>
+									<li class="active">
+										<h3><a href="{%url 'users:infourolo' %}">Próstata con láser holmiun</a></h3>
+									</li>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<div class="single-about-detail">
+					<div class="about-details">
+						
+						<div class="panel-group" id="accordion">
+							<div class="panel-heading">
+								<h3 class="panel-title">
+									<a data-toggle="collapse" data-parent="#accordion" href="#collapse8">
+										General
+									</a>
+								</h3>
+							</div>
+							<div id="collapse8" class="panel-collapse collapse">
+								<div class="panel-body">
+									<li class="active">
+										<h3><a href="{%url 'users:infogeneral' %}">Hernia inguinal</a></h3>
+									</li>
+									<li class="active">
+										<h3><a href="{%url 'users:infogeneral' %}">Hernia femoral</a></h3>
+									</li>
+									<li class="active">
+										<h3><a href="{%url 'users:infogeneral' %}">Hernia umbilical</a></h3>
+									</li>
+									<li class="active">
+										<h3><a href="{%url 'users:infogeneral' %}">Tiroídes</a></h3>
+									</li>
+									<li class="active">
+										<h3><a href="{%url 'users:infogeneral' %}">Hemorroides</a></h3>
+									</li>
+									<li class="active">
+										<h3><a href="{%url 'users:infogeneral' %}">Apéndice</a> </h3>
+									</li>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+</section>
 
 
 <!--#######################################COLUMNA MEDICOS##############################################-->
@@ -239,7 +507,7 @@
 			<div class="row">
 				<div class="team-heading text-center">
 					<h2>Medicos</h2>
-					<h4>Estos especialistas están calificados para diagnosticar y/o tratar trastornos que afectan el aprendizaje y la atención, incluyendo el trastorno por déficit de atención con hiperactividad (TDAH).</h4>
+					<h4>Conoce a nuestro grupo médicos cirujanos, especializados en diversas áreas que trabajan incansablemente para brindar bienestar a todos sus pacientes, incluyendo a los que se encuentran fuera del país.</h4>
 				</div>
 
 				<div class="col-md-2 single-member col-sm-4">
@@ -249,7 +517,7 @@
 					<div class="person-detail">
 						<div class="arrow-bottom"></div>
 						<h3>Dr. Manuel Weiner</h3>
-						<p>Esto puede incluir información sobre su audición, vista y crecimiento.</p>
+						<p>Médico especializado en úrología, con más de 20 años de experiencia.</p>
 					</div>
 				</div>
 
@@ -257,7 +525,7 @@
 					<div class="person-detail">
 						<div class="arrow-top"></div>
 						<h3>Dra. Daniela Suarez</h3>
-						<p>Esto puede incluir información sobre su audición, vista y crecimiento.</p>
+						<p>Médico especializado en cardiología, con más de 5 años de experiencia.</p>
 					</div>
 					<div class="person">
 						<img class="img-responsive" src="{% static "users/home/img/member2.jpg" %}" alt="member-2">
@@ -271,7 +539,7 @@
 					<div class="person-detail">
 						<div class="arrow-bottom"></div>
 						<h3>Dr. Carlos Castillo</h3>
-						<p>Esto puede incluir información sobre su audición, vista y crecimiento.</p>
+						<p>Médico especializado en traumalogía, con más de 12 años de experiencia.</p>
 					</div>
 				</div>
 
@@ -279,7 +547,7 @@
 					<div class="person-detail">
 						<div class="arrow-top"></div>
 						<h3>Dra. Maria Sanchez</h3>
-						<p>Esto puede incluir información sobre su audición, vista y crecimiento.</p>
+						<p>Médico especializado en estética, con más de 7 años de experiencia.</p>
 					</div>
 					<div class="person">
 						<img class="img-responsive" src="{% static "users/home/img/member4.jpg" %}" alt="member-4">
@@ -293,7 +561,7 @@
 					<div class="person-detail">
 						<div class="arrow-bottom"></div>
 						<h3>Dr. Michael Gimenez</h3>
-						<p>Esto puede incluir información sobre su audición, vista y crecimiento.</p>
+						<p>Médico especializado en oftalmología, con más de 8 años de experiencia.</p>
 					</div>
 				</div>
 
@@ -301,7 +569,7 @@
 					<div class="person-detail">
 						<div class="arrow-top"></div>
 						<h3>Dra. Gabriela Falcon</h3>
-						<p>Esto puede incluir información sobre su audición, vista y crecimiento.</p>
+						<p>Médico especializado en ginecología, con más de 10 años de experiencia.</p>
 					</div>
 					<div class="person">
 						<img class="img-responsive" src="{% static "users/home/img/member6.jpg" %}" alt="member-5">
@@ -330,11 +598,9 @@
 						<h2>Contáctenos</h2>
 					</div>
 					<div class="col-md-5 contact-info text-left">
-						<h3>informacion de contacto</h3>
+						<h3>información de contacto</h3>
 						<div class="info-detail">
-							<ul><li><i class="fa fa-calendar"></i><span>Lunes-Viernes:</span> 9:30 AM a 6:30 PM</li></ul>
-							<ul><li><i class="fa fa-map-marker"></i><span>Dirección:</span> Cabudare urbanizacion Guadalupe, Cabudare, Lara</li></ul>
-							<ul><li><i class="fa fa-phone"></i><span>Telefono:</span> (032) 987-1235</li></ul>
+							<ul><li><i class="fa fa-phone"></i><span>Telefono:</span> (0251) 987-1235</li></ul>
 							<ul><li><i class="fa fa-fax"></i><span>Fax:</span> (123) 984-1234</li></ul>
 							<ul><li><i class="fa fa-envelope"></i><span>Email:</span> info@mvworld.com</li></ul>
 						</div>
