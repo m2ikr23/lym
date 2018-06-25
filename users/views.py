@@ -101,6 +101,31 @@ class editFotoView(UpdateView):
 def homeView(request):
     return render(request,'home/home.html')
 
+def maxiView(request):
+    return render(request,'home/Infomaxi.html')
+
+def plastiView(request):
+    return render(request,'home/infoplasti.html')
+
+def traumaView(request):
+    return render(request,'home/infotrauma.html')
+
+def gineView(request):
+    return render(request,'home/infogine.html')
+
+def oftamoView(request):
+    return render(request,'home/infoftamo.html')
+
+def otorrinoView(request):
+    return render(request,'home/infotorrino.html')
+
+def uroloView(request):
+    return render(request,'home/infourolo.html')
+
+def generalView(request):
+    return render(request,'home/infogeneral.html')
+
+
 class DashboardView(LoginRequiredMixin,View):
 
     login_url = 'users:login'

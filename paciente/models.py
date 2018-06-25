@@ -11,7 +11,6 @@ class Paciente(User):
 
 
 
-
 class Paquete(models.Model):
  
     id = models.CharField(max_length=8,primary_key=True)

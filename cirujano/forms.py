@@ -24,7 +24,6 @@ class PlanificarForm(forms.ModelForm):
         super(PlanificarForm, self).__init__(*args, **kwargs)
         self.fields['fecha'].widget.attrs.update( {'id':'fecha_select', 'class':'datepicker1' } )
 
-
 class CreateCirugiaForm(forms.ModelForm):
 
     class Meta:

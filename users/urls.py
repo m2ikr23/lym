@@ -26,5 +26,13 @@ urlpatterns = [
     path('paquete/exito' ,views.notificacionPaqueteView, name='notificacionPaquete'),
     path('paquete/fail',views.notificacionFailPaqueteView, name='notificacionFailPaquete'),
     path('historia/fail',views.notificacionFailHistoriaView, name='notificacionFailHistoria'),
-    path('planificar/fail',views.notificacionFailPlanificarView, name='notificacionFailPlanificar')
+    path('planificar/fail',views.notificacionFailPlanificarView, name='notificacionFailPlanificar'),
+    path('info/',views.maxiView, name='Infomaxi'),
+    path('infoplas/',views.plastiView, name='infoplasti'),
+    path('infotraum/',views.traumaView, name='infotrauma'),
+    path('infofta/',views.oftamoView, name='infoftamo'),
+    path('infogene/',views.generalView, name='infogeneral'),
+    path('infogineco/',views.gineView, name='infogine'),
+    path('infootorri/',views.otorrinoView, name='infotorrino'),
+    path('infouro/',views.uroloView, name='infourolo')
 ]
