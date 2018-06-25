@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from .models import Cirujano,Cirugia_Planificada,Cirugia,Especialidad,Historia
+from .models import Cirujano,Cirugia_Planificada,Cirugia,Especialidad,Historia,Cita
 from users.forms import CreateForm as Create
 
 class CreateForm(Create):
@@ -18,11 +18,12 @@ class PlanificarForm(forms.ModelForm):
 
     class Meta:
         model = Cirugia_Planificada
-        fields = ['cirugia','fecha','quirofano','cirujano','paciente','descripcion']
+        fields = ['cirugia','fecha','clinica','quirofano','descripcion']
 
     def __init__(self, *args, **kwargs):
         super(PlanificarForm, self).__init__(*args, **kwargs)
         self.fields['fecha'].widget.attrs.update( {'id':'fecha_select', 'class':'datepicker1' } )
+
 
 class CreateCirugiaForm(forms.ModelForm):
 
@@ -66,3 +67,12 @@ class UpdateHistoriaForm(forms.ModelForm):
 
         model = Historia
         fields = ['peso','grupo_san','tipo_aler','cirugias_ant','patologia','observaciones']
+
+
+
+class ConfirmarForm(forms.ModelForm):
+
+    class Meta:
+
+        model = Cita
+        fields = ['confirmada']

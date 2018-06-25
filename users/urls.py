@@ -26,4 +26,5 @@ urlpatterns = [
     path('paquete/exito' ,views.notificacionPaqueteView, name='notificacionPaquete'),
     path('paquete/fail',views.notificacionFailPaqueteView, name='notificacionFailPaquete'),
     path('historia/fail',views.notificacionFailHistoriaView, name='notificacionFailHistoria'),
+    path('planificar/fail',views.notificacionFailPlanificarView, name='notificacionFailPlanificar')
 ]

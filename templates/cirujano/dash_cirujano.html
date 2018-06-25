@@ -3,9 +3,11 @@
 {% block card-content %}
 <div class="collection ">
     <a href=" {% url 'users:update' %} " class="collection-item center-align">Actualizar datos</a>
+  
     <a href="{% url 'cirujano:historias' %}" class="collection-item center-align">Consultar historia</a>
-    <a href="{% url 'cirujano:planificar' %}" class="collection-item center-align">Planificar cirugia</a>
-    <a href="#!" class="collection-item center-align">Consultar planificación</a>
+    <a href="#!" class="collection-item center-align">Consultar planificación</a> 
+   
+   
 </div>
 {% endblock card-content %} 
 
@@ -46,7 +48,7 @@
                         Pendiente
                     </th>
                     <th>
-                        <a href="">Confirmar</a>
+                        <a href="{% url 'cirujano:confirmar' cita.pk %}">Confirmar</a>
                     </th>
                     {% endif %}
             
@@ -55,7 +57,7 @@
                        Confirmada
                     </th>
                     <th>
-                        <a href="">Cancelar</a>
+                        <a href="{% url 'paciente:cancelar' cita.pk %}">Cancelar</a>
                     </th>
                     {% endif %}
                     
@@ -64,6 +66,11 @@
                         <a href="{% url 'cirujano:registrarHistoria' cita.pk %}">Crear historia</a>
                     </th>  
                     {% endif %}
+                    {% if cita.confirmada %}
+                    <th>
+                      <a  href="{% url 'cirujano:planificar' cita.pk %}">Planificar Cirugía</a>
+                    </th>
+                    {%endif%}
                         
                     
                 </tr>

@@ -1,6 +1,6 @@
 from django.db import models
 from users.models import User
-from clinica.models import Quirofano
+from clinica.models import Quirofano,Clinica
 from paciente.models import Paciente
 from datetime import date
 
@@ -47,12 +47,15 @@ class Cirugia(models.Model):
 
 class Cirugia_Planificada(models.Model):
     cirugia = models.ForeignKey(Cirugia,on_delete=models.CASCADE)
-    fecha = models.DateField(default=date.today,unique=True)
+    fecha = models.DateField(default=date.today,unique=True,verbose_name='Fecha para la cirugía')
+    clinica = models.ForeignKey(Clinica, on_delete=models.CASCADE)
     quirofano = models.ForeignKey(Quirofano,on_delete=models.CASCADE)
     cirujano = models.ForeignKey(Cirujano,on_delete=models.CASCADE)
-    paciente = models.OneToOneField(Paciente, on_delete=models.CASCADE)
+    paciente = models.OneToOneField('Cita', on_delete=models.CASCADE)
     descripcion = models.TextField(max_length=150)
 
+    def __str__(self):
+        return '%s - %s' %(self.fecha,self.paciente.paciente)
 
 class Agenda(models.Model):
   pass

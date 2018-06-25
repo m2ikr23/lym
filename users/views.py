@@ -108,7 +108,7 @@ class DashboardView(LoginRequiredMixin,View):
     def get(self,request,*args,**kwargs):
         if(request.user.is_medical):
             citas = Cita.objects.filter(medico = Cirujano.objects.get(pk=request.user.pk))
-            return render(request, 'cirujano/dash_cirujano.html',{'citas':citas})
+            return render(request, 'cirujano/dash_cirujano.html',{'citas':citas,'user':request.user})
         if(request.user.is_pacient):
             try:
                 cita = Cita.objects.get(paciente = Paciente.objects.get(pk= request.user.pk))
@@ -183,6 +183,9 @@ def notificacionFailPaqueteView(request):
 
 def notificacionFailHistoriaView(request):
  return render(request,'users/notificacion_fail_historia.html')
+
+def notificacionFailPlanificarView(request):
+ return render(request,'users/notificacion_fail_Planificar.html')
 
 
 
