@@ -98,4 +98,4 @@ class Historia(models.Model):
     observaciones = models.TextField(max_length=150,verbose_name='Observaciones')
    
     def __str__(self):
-        return self.observaciones
+         return self.observaciones
