@@ -1,0 +1,43 @@
+{% extends "admin/dashboard.html" %}
+
+{% block card-content %}
+<div class="collection ">
+    <a href=" {% url 'users:update' %} " class="collection-item center-align">Actualizar datos</a>
+    <a href="{% url 'cirujano:historias' %}" class="collection-item center-align">Consultar historia</a>
+    <a href="{% url 'cirujano:planificaciones' %}" class="collection-item center-align">Consultar planificación</a>
+    </div>    
+{% endblock card-content %}
+
+{% block centro  %}
+<div class="header-table "><h2 class="center-align">Consultar planificaciones</h2></div>
+<div id="tabla-clinica" >
+ 
+<table  class="highlight responsive-table centered " >
+  <thead class="header grey">
+    <tr>
+      <th>Paciente</th>
+      <th>Fecha</th>
+      <th>Quirofano</th>
+      <th>Clinica</th>
+      <th>Cirugía</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  {% for planificacion in planificaciones %}
+  <thead>
+    <tr>
+      <th><a href="#">{{planificacion.paciente.paciente|capfirst}}</a></th>
+      <th>{{planificacion.fecha}}</th>
+      <th>{{planificacion.quirofano}}</th>
+      <th>{{planificacion.quirofano.clinica}}</th>
+      <th>{{planificacion.cirugia}}</th>
+      <th><a href="{% url 'cirujano:updatePlanificacion' planificacion.pk %}"> Actualizar Planificación</a></th>
+    </tr>
+  </thead>
+  {% endfor %}
+
+</div>
+
+</table>
+
+{% endblock centro %}

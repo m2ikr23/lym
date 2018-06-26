@@ -2,83 +2,115 @@
 
 {% block card-content %}
 <div class="collection ">
-    <a href=" {% url 'users:update' %} " class="collection-item center-align">Actualizar datos</a>
-  
-    <a href="{% url 'cirujano:historias' %}" class="collection-item center-align">Consultar historia</a>
-    <a href="#!" class="collection-item center-align">Consultar planificación</a> 
-   
-   
+        <a href=" {% url 'users:update' %} " class="collection-item center-align">Actualizar datos</a>
+        <a href="{% url 'cirujano:historias' %}" class="collection-item center-align">Consultar historia</a>
+        <a href="{% url 'cirujano:planificaciones' %}" class="collection-item center-align">Consultar planificación</a>
+
+
 </div>
-{% endblock card-content %} 
+{% endblock card-content %}
 
 {% block centro %}
-<section>
-    <ul id="info" class="collection">
-        <li class="collection-item">Dirección: {{user.address}} </li>
-        <li class="collection-item">Teléfono: {{user.phone}} </li>
-        <li class="collection-item">Fecha de nacimiento: {{user.birthdate}} </li>
-    </ul>
-    </section>
 
-    <div class="header-table ">
-        <h2 class="center-align">Citas pendientes</h2>
-    </div>
-    <div id="tabla-ciru">
+<div id="calendar"></div>
 
-        <table class="highlight responsive-table centered ">
-            <thead class="header grey">
-                <tr>
-                    <th>Paciente</th>
-                    <th>Descripción</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            {% for cita in citas %}
 
-            <thead>
-                <tr>
-                    <th>
-                        <a href="#">{{cita.paciente|capfirst}}</a>
-                    </th>
-                    <th>{{cita.descripcion}}</th>
+<div class="header-table ">
+    <h2 class="center-align">Citas pendientes</h2>
+</div>
+<div id="tabla-ciru">
 
-                    {% if not cita.confirmada %}
-                    <th>
-                        Pendiente
-                    </th>
-                    <th>
-                        <a href="{% url 'cirujano:confirmar' cita.pk %}">Confirmar</a>
-                    </th>
-                    {% endif %}
-            
-                    {% if cita.confirmada %}
-                    <th>
-                       Confirmada
-                    </th>
-                    <th>
-                        <a href="{% url 'paciente:cancelar' cita.pk %}">Cancelar</a>
-                    </th>
-                    {% endif %}
-                    
-                    {% if cita %}
-                      <th>
-                        <a href="{% url 'cirujano:registrarHistoria' cita.pk %}">Crear historia</a>
-                    </th>  
-                    {% endif %}
-                    {% if cita.confirmada %}
-                    <th>
-                      <a  href="{% url 'cirujano:planificar' cita.pk %}">Planificar Cirugía</a>
-                    </th>
-                    {%endif%}
-                        
-                    
-                </tr>
-            </thead>
+    <table class="highlight responsive-table centered ">
+        <thead class="header grey">
+            <tr>
+                <th>Paciente</th>
+                <th>Descripción</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        {% for cita in citas %}
 
-            {% endfor %}
+        <thead>
+            <tr>
+                <th>
+                    <a href="#">{{cita.paciente|capfirst}}</a>
+                </th>
+                <th>{{cita.descripcion}}</th>
 
-    </div>
+                {% if not cita.confirmada %}
+                <th>
+                    Pendiente
+                </th>
+                <th>
+                    <a href="{% url 'cirujano:confirmar' cita.pk %}">Confirmar</a>
+                </th>
+                {% endif %} 
+                
+                {% if cita.confirmada %}
+                <th>
+                    Confirmada
+                </th>
+                <th>
+                    <a href="{% url 'paciente:cancelar' cita.pk %}">Cancelar</a>
+                </th>
+                {% endif %} {% if cita %}
+                <th>
+                    <a href="{% url 'cirujano:registrarHistoria' cita.pk %}">Crear historia</a>
+                </th>
+                {% endif %} 
+                
+                {% if cita.confirmada %}
+                <th>
+                    <a href="{% url 'cirujano:planificar' cita.pk %}">Planificar Cirugía</a>
+                </th>
+                {%endif%}
 
-    </table>
-    {% endblock centro %}
+
+            </tr>
+        </thead>
+
+        {% endfor %}
+
+</div>
+
+</table>
+{% endblock centro %} 
+
+{% block scripts %}
+<script>
+  $(function() {
+
+// page is now ready, initialize the calendar...
+ console.log("{{planificaciones}}");
+$('#calendar').fullCalendar({
+   
+    events: [
+        {% for i in planificaciones %}
+      
+        {
+         titile: "{{i.descripcion}}",
+         start: '{{i.fecha|date:"Y-m-d"}}',
+         end: "{{i.fecha}}",
+         color: "red",
+         textColor: 'black',
+         allDay:true
+        },
+        
+        {% endfor %}
+
+    ]
+  
+})
+
+var calendar = $('#calendar').fullCalendar('getCalendar');
+
+calendar.on('dayClick', function(date, jsEvent, view) {
+  console.log('clicked on ' + date.format());
+});
+
+});
+</script>
+
+
+ {% endblock scripts %}

@@ -13,17 +13,24 @@ class CrearClinicaView(CreateView):
     model = Clinica
     form_class = CreateForm
 
-class CrearQuirofanoView(CreateView):
-    success_url = reverse_lazy('users:notificacion')
-    template_name = 'clinica/incluir_quirofano.html'
-    model = Quirofano
-    form_class = CreateQuirofanoForm
+
+class UpdateClinicaView(UpdateView):
+
+    model = Clinica
+    template_name ='clinica/actualizar_clinica.html'
+    success_url = reverse_lazy('users:clinicas')
+    form_class = UpdateClinicaForm
 
 class ClinicasView(ListView):
     model = Clinica
     template_name = "clinica/consulta_clinica.html"
     context_object_name = "clinicas"
 
+class CrearQuirofanoView(CreateView):
+    success_url = reverse_lazy('users:notificacion')
+    template_name = 'clinica/incluir_quirofano.html'
+    model = Quirofano
+    form_class = CreateQuirofanoForm
 
 
 class QuirofanosView(ListView):
@@ -37,12 +44,6 @@ class QuirofanosView(ListView):
         return context
 
 
-class UpdateClinicaView(UpdateView):
-
-    model = Clinica
-    template_name ='clinica/actualizar_clinica.html'
-    success_url = reverse_lazy('users:clinicas')
-    form_class = UpdateClinicaForm
 
 class UpdateQuirofanoView(UpdateView):
 

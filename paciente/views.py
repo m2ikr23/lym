@@ -66,7 +66,7 @@ class CitaView(CreateView):
 
     def form_valid(self,form):
         try:
-            cita = Cita.objects.get(paciente=self.request.user.pk)
+         cita = Cita.objects.get(paciente=self.request.user.pk)
         except:
             cita = None
              

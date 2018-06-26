@@ -3,8 +3,8 @@
 {% block card-content %}
 <div class="collection ">
     <a href=" {% url 'users:update' %} " class="collection-item center-align">Actualizar datos</a>
-    <a href="#!" class="collection-item center-align">Consultar historia</a>
-    <a href="#!" class="collection-item center-align">Consultar planificación</a>
+    <a href="{% url 'cirujano:historias' %}" class="collection-item center-align">Consultar historia</a>
+    <a href="{% url 'cirujano:planificaciones' %}" class="collection-item center-align">Consultar planificación</a>
     </div>    
 {% endblock card-content %}
 

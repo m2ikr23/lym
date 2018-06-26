@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import LoginForm, CreateForm,ImageUploadForm,UpdateUserForm,DesactivateUserForm
 
 from .models import User
-from cirujano.models import Cirujano,Cita
+from cirujano.models import Cirujano,Cita,Cirugia_Planificada
 from paciente.models import Paciente
 
 class LoginView(View):
@@ -133,9 +133,11 @@ class DashboardView(LoginRequiredMixin,View):
     def get(self,request,*args,**kwargs):
         if(request.user.is_medical):
             citas = Cita.objects.filter(medico = Cirujano.objects.get(pk=request.user.pk))
-            return render(request, 'cirujano/dash_cirujano.html',{'citas':citas,'user':request.user})
+            planificaciones = Cirugia_Planificada.objects.all()
+            return render(request, 'cirujano/dash_cirujano.html',{'citas':citas,'planificaciones':planificaciones})
         if(request.user.is_pacient):
             try:
+                planificaciones = Cirugia_Planificada.objects.all()
                 cita = Cita.objects.get(paciente = Paciente.objects.get(pk= request.user.pk))
             except:
                 cita = None

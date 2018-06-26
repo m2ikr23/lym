@@ -48,7 +48,6 @@ class Cirugia(models.Model):
 class Cirugia_Planificada(models.Model):
     cirugia = models.ForeignKey(Cirugia,on_delete=models.CASCADE)
     fecha = models.DateField(default=date.today,unique=True,verbose_name='Fecha para la cirugía')
-    clinica = models.ForeignKey(Clinica, on_delete=models.CASCADE)
     quirofano = models.ForeignKey(Quirofano,on_delete=models.CASCADE)
     cirujano = models.ForeignKey(Cirujano,on_delete=models.CASCADE)
     paciente = models.OneToOneField('Cita', on_delete=models.CASCADE)
@@ -63,7 +62,7 @@ class Agenda(models.Model):
 
 class Cita(models.Model):
 
-    paciente = models.OneToOneField(Paciente, on_delete=models.CASCADE)
+    paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
     medico = models.ForeignKey(Cirujano,on_delete=models.CASCADE,verbose_name="Médico cirujano",)
     fecha_solicitud = models.DateField(auto_now_add=True)
     confirmada = models.BooleanField(default=False)

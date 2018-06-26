@@ -18,11 +18,17 @@ class PlanificarForm(forms.ModelForm):
 
     class Meta:
         model = Cirugia_Planificada
-        fields = ['cirugia','fecha','clinica','quirofano','descripcion']
+        fields = ['cirugia','fecha','quirofano','descripcion']
 
     def __init__(self, *args, **kwargs):
         super(PlanificarForm, self).__init__(*args, **kwargs)
         self.fields['fecha'].widget.attrs.update( {'id':'fecha_select', 'class':'datepicker1' } )
+
+class UpdateplanificacionForm(forms.ModelForm):
+
+    class Meta:
+        model = Cirugia_Planificada
+        fields = ['cirugia','fecha','quirofano','descripcion']
 
 class CreateCirugiaForm(forms.ModelForm):
 

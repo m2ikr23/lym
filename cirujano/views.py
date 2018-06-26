@@ -7,12 +7,12 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView,DeleteView
 from django.views.generic import View, DetailView,ListView
-from .forms import CreateCirugiaForm,CreateEspecialidadForm,CreateForm,PlanificarForm,UpdateCirugiaForm,UpdateEspecialidadForm,CrearHistoriaForm,UpdateHistoriaForm,ConfirmarForm
+from .forms import CreateCirugiaForm,CreateEspecialidadForm,CreateForm,PlanificarForm,UpdateCirugiaForm,UpdateEspecialidadForm,CrearHistoriaForm,UpdateHistoriaForm,ConfirmarForm,UpdateplanificacionForm
 from .models import Cirugia,Cirugia_Planificada,Cirujano,Especialidad,Historia,Cita
 from clinica.models import Clinica, Quirofano
 
 class CrearView(CreateView):
-    success_url = reverse_lazy('cirujano:registro')
+    success_url = reverse_lazy('users:notificacion')
     template_name = 'cirujano/registro_cirujano.html'
     model = Cirujano
     form_class = CreateForm
@@ -43,7 +43,18 @@ class planificarCirugiaView(CreateView):
             return HttpResponseRedirect(self.fail_url)
     
 
+
+class PlanificacionView(ListView):
+    model = Cirugia_Planificada
+    template_name = "cirujano/consultar_planificacion.html"
+    context_object_name = "planificaciones"
     
+class UpdatePlanificacionView(UpdateView):
+
+    model = Cirugia_Planificada
+    template_name ='cirujano/actualizar_planificacion.html'
+    success_url = reverse_lazy('cirujano:planificaciones')
+    form_class = UpdateplanificacionForm
 
 class CrearCirugiaView(CreateView):
     success_url = reverse_lazy('users:notificacion')
@@ -124,3 +135,9 @@ class ConfirmarView(UpdateView):
         self.object.confirmada = True
         self.object.save()
         return HttpResponseRedirect(self.get_success_url())
+
+def infoCalendarView(request):
+    planificaciones = Cirugia_Planificada.objects.all()
+    data = serializers.serialize('json',planificaciones,
+    fields = {'id','fecha'})
+    return HttpResponse(data,content_type='application/json')
